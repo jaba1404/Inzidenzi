@@ -18,7 +18,7 @@ public class Incidence extends Command {
 
 
     public Incidence() {
-        super("incidence");
+        super("incidence", "inzidenz", "inzidenzi");
     }
 
     @Override

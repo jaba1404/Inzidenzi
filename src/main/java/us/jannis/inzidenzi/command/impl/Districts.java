@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 public class Districts extends Command {
 
     public Districts() {
-        super("districts");
+        super("districts", "bezirke");
     }
 
     @Override
