@@ -17,7 +17,7 @@ public abstract class Command extends CommandUtil {
 
     public abstract void execute(String[] args, MessageChannel messageChannel, Message message, Guild guild);
 
-    public abstract String getHelp();
+    public abstract String[] getHelp();
 
     public abstract String getSyntax();
 

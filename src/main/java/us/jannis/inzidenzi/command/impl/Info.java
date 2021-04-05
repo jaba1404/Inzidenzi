@@ -40,8 +40,8 @@ public class Info extends Command {
     }
 
     @Override
-    public String getHelp() {
-        return null;
+    public String[] getHelp() {
+        return new String[] {"" , "Information about Inzidenzi"};
     }
 
     @Override

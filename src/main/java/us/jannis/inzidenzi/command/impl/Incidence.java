@@ -39,8 +39,8 @@ public class Incidence extends Command {
     }
 
     @Override
-    public String getHelp() {
-        return null;
+    public String[] getHelp() {
+        return new String[]{"<city/district>", "Shows the currrent incidence of a city or district"};
     }
 
     @Override

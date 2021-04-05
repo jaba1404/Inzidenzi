@@ -25,8 +25,8 @@ public class Invite extends Command {
     }
 
     @Override
-    public String getHelp() {
-        return null;
+    public String[] getHelp() {
+        return new String[] {"", "Invite Inzidenzi to your own server"};
     }
 
     @Override

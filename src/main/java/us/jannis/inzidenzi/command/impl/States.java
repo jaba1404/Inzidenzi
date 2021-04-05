@@ -15,12 +15,12 @@ import java.util.Arrays;
 public class States extends Command {
 
     public States() {
-        super("states", "bundesland");
+        super("states", "bundesland", "state");
     }
 
     @Override
     public void execute(String[] args, MessageChannel messageChannel, Message message, Guild guild) {
-        if(args.length < 1)
+        if (args.length < 1)
             return;
         final String query = new String(String.join(" ", args).trim().getBytes(StandardCharsets.UTF_8));
         final State state = Arrays.stream(State.values()).filter(index -> index.getDisplayName().equalsIgnoreCase(query)).findFirst().orElse(Arrays.stream(State.values()).filter(index -> isMatchingState(index, query)).findFirst().orElse(null));
@@ -37,8 +37,8 @@ public class States extends Command {
 
 
     @Override
-    public String getHelp() {
-        return null;
+    public String[] getHelp() {
+        return new String[]{"<state>", "Shows information about COVID-19 in the state"};
     }
 
     @Override

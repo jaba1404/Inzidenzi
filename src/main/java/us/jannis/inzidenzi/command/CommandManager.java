@@ -10,6 +10,7 @@ import java.util.List;
 public class CommandManager {
 
     private final List<Command> commands = new ArrayList<>();
+    public final static String PREFIX = "?";
 
     public CommandManager() {
         final Reflections reflections = new Reflections("us.jannis.inzidenzi.command.impl");
@@ -24,12 +25,11 @@ public class CommandManager {
 
 
     public void execute(Message message) {
-        final String prefix = "?";
         final String msg = message.getContentRaw().trim();
-        if (!msg.startsWith(prefix)) {
+        if (!msg.startsWith(PREFIX)) {
             return;
         }
-        final String[] split = msg.substring(prefix.length()).split(" ");
+        final String[] split = msg.substring(PREFIX.length()).split(" ");
         for (Command command : commands) {
             if (command.getName().equalsIgnoreCase(split[0]) || (command.getAliases() != null && Arrays.stream(command.getAliases()).anyMatch(split[0].toLowerCase()::equalsIgnoreCase))) {
                 final String[] args = Arrays.copyOfRange(split, 1, split.length);
@@ -48,5 +48,9 @@ public class CommandManager {
 
     public List<Command> getCommands() {
         return commands;
+    }
+
+    public Command getCommandByClass(Class<? extends Command> clazz) {
+        return commands.stream().filter(command -> command.equals(clazz)).findFirst().orElse(null);
     }
 }

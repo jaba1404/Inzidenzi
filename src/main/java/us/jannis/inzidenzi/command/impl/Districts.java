@@ -21,7 +21,7 @@ public class Districts extends Command {
     @Override
     public void execute(String[] args, MessageChannel messageChannel, Message message, Guild guild) {
 
-        if(args.length >= 1){
+        if (args.length >= 1) {
             final String query = String.join(" ", args).trim();
             final EmbedBuilder embedBuilder = new EmbedBuilder();
             embedBuilder.setTitle("Matching districts").setColor(Color.green);
@@ -46,8 +46,8 @@ public class Districts extends Command {
 
 
     @Override
-    public String getHelp() {
-        return null;
+    public String[] getHelp() {
+        return new String[]{"<city/district>", "Shows matching districts"};
     }
 
     @Override
