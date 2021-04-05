@@ -2,6 +2,7 @@ package us.jannis.inzidenzi.util;
 
 import org.apache.commons.text.similarity.JaroWinklerDistance;
 import us.jannis.inzidenzi.enums.District;
+import us.jannis.inzidenzi.enums.State;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
@@ -42,6 +43,13 @@ public class CommandUtil {
 
     public boolean isMatchingDistrict(District district, String input) {
         return isMatchingDistrict(district, input, 0.8f);
+    }
+
+    public boolean isMatchingState(State state, String input, float threshold) {
+        return match(state.getDisplayName(), input, threshold);
+    }
+    public boolean isMatchingState(State state, String input) {
+        return match(state.getDisplayName(), input, 0.8f);
     }
 
     public boolean match(String text, String key, float threshold) {

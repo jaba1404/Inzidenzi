@@ -45,4 +45,8 @@ public class CommandManager {
             return;
         this.commands.add(command);
     }
+
+    public List<Command> getCommands() {
+        return commands;
+    }
 }

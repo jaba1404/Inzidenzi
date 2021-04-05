@@ -15,7 +15,7 @@ import java.util.List;
 public class Districts extends Command {
 
     public Districts() {
-        super("districts", "bezirke");
+        super("districts", "bezirke", "bezirk");
     }
 
     @Override
