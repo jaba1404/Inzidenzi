@@ -1,6 +1,5 @@
 package us.jannis.inzidenzi;
 
-import com.google.gson.internal.LinkedTreeMap;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
@@ -14,9 +13,11 @@ import org.reflections8.Reflections;
 import us.jannis.inzidenzi.command.CommandManager;
 import us.jannis.inzidenzi.exception.InitializationException;
 import us.jannis.inzidenzi.responses.DistrictResponse;
+import us.jannis.inzidenzi.responses.KeyDataResponse;
 import us.jannis.inzidenzi.responses.StateResponse;
 import us.jannis.inzidenzi.util.RkiUtil;
 import us.jannis.inzidenzi.util.save.DistrictSaver;
+import us.jannis.inzidenzi.util.save.KeyDataSaver;
 import us.jannis.inzidenzi.util.save.StateSaver;
 
 import javax.security.auth.login.LoginException;
@@ -36,23 +37,32 @@ public class Inzidenzi {
     private static final CommandManager COMMAND_MANAGER = new CommandManager();
     private static final List<StateResponse> STATE_RESPONSES = new ArrayList<>();
     private static final List<DistrictResponse> DISTRICT_RESPONSES = new ArrayList<>();
-    private static final DistrictSaver districtSaver = new DistrictSaver();
-    private static final StateSaver stateSaver = new StateSaver();
+    private static final List<KeyDataResponse> KEY_DATA_RESPONSES = new ArrayList<>();
+    private static final DistrictSaver DISTRICT_SAVER = new DistrictSaver();
+    private static final KeyDataSaver KEY_DATA_SAVER = new KeyDataSaver();
+    private static final StateSaver STATE_SAVER = new StateSaver();
 
     static {
         try {
-            if (districtSaver.hasTodayAsSave()){
-                DISTRICT_RESPONSES.addAll(districtSaver.readEntries());
+            if (DISTRICT_SAVER.hasTodayAsSave()){
+                DISTRICT_RESPONSES.addAll(DISTRICT_SAVER.readEntries());
             } else {
                 DISTRICT_RESPONSES.addAll(RkiUtil.indexDistricts());
-                districtSaver.saveEntries(DISTRICT_RESPONSES);
+                DISTRICT_SAVER.saveEntries(DISTRICT_RESPONSES);
             }
 
-            if (stateSaver.hasTodayAsSave()){
-                STATE_RESPONSES.addAll(stateSaver.readEntries());
+            if (STATE_SAVER.hasTodayAsSave()){
+                STATE_RESPONSES.addAll(STATE_SAVER.readEntries());
             } else {
                 STATE_RESPONSES.addAll(RkiUtil.indexStates());
-                stateSaver.saveEntries(STATE_RESPONSES);
+                STATE_SAVER.saveEntries(STATE_RESPONSES);
+            }
+
+            if (KEY_DATA_SAVER.hasTodayAsSave()){
+                KEY_DATA_RESPONSES.addAll(KEY_DATA_SAVER.readEntries());
+            } else {
+                KEY_DATA_RESPONSES.addAll(RkiUtil.indexKeyData());
+                KEY_DATA_SAVER.saveEntries(KEY_DATA_RESPONSES);
             }
 
             final EnumSet<GatewayIntent> gatewayIntents = GatewayIntent.getIntents(GatewayIntent.ALL_INTENTS);
@@ -82,11 +92,19 @@ public class Inzidenzi {
     }
 
     public static DistrictSaver getDistrictSaver() {
-        return districtSaver;
+        return DISTRICT_SAVER;
     }
 
     public static StateSaver getStateSaver() {
-        return stateSaver;
+        return STATE_SAVER;
+    }
+
+    public static KeyDataSaver getKeyDataSaver() {
+        return KEY_DATA_SAVER;
+    }
+
+    public static List<KeyDataResponse> getKeyDataResponses() {
+        return KEY_DATA_RESPONSES;
     }
 
     public static List<DistrictResponse> getDistrictResponses() {

@@ -3,14 +3,7 @@ package us.jannis.inzidenzi.command;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageChannel;
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.text.similarity.JaroWinklerDistance;
-import us.jannis.inzidenzi.enums.District;
-import us.jannis.inzidenzi.util.AsciiParser;
 import us.jannis.inzidenzi.util.CommandUtil;
-
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.StandardCharsets;
 
 public abstract class Command extends CommandUtil {
 

@@ -1,7 +1,5 @@
 package us.jannis.inzidenzi.util;
 
-import org.json.JSONObject;
-
 import java.nio.charset.StandardCharsets;
 import java.util.regex.Pattern;
 

@@ -3,6 +3,7 @@ package us.jannis.inzidenzi.util;
 import org.apache.http.HttpResponse;
 import org.json.JSONObject;
 import us.jannis.inzidenzi.responses.DistrictResponse;
+import us.jannis.inzidenzi.responses.KeyDataResponse;
 import us.jannis.inzidenzi.responses.StateResponse;
 
 import java.io.IOException;
@@ -32,6 +33,17 @@ public class RkiUtil {
             }
         }
         return stateResponses;
+    }
+
+    public static  List<KeyDataResponse> indexKeyData() throws IOException {
+        final List<KeyDataResponse> keyDataResponses = new ArrayList<>();
+        final HttpResponse httpResponse = HttpUtil.getRequest("https://services7.arcgis.com/mOBPykOjAyBO2ZKk/arcgis/rest/services/rki_key_data_hubv/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json", new HashMap<>());
+        for (Object o : HttpUtil.toJSONObject(httpResponse).getJSONArray("features")) {
+            if (o instanceof JSONObject) {
+                keyDataResponses.add((KeyDataResponse) HttpUtil.toObjectAscii(((JSONObject) o).getJSONObject("attributes"), KeyDataResponse.class));
+            }
+        }
+        return keyDataResponses;
     }
 
 

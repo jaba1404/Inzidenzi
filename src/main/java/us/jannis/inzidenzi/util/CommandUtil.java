@@ -5,7 +5,6 @@ import us.jannis.inzidenzi.enums.District;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 
 public class CommandUtil {
 
