@@ -23,11 +23,7 @@ public class Info extends Command {
         final ShardManager shardManager = Inzidenzi.getShardManager();
         final EmbedBuilder embedBuilder = new EmbedBuilder();
 
-        int shardId = shardManager.getShards().indexOf(message.getJDA());
-        if(args.length == 1 && StringUtils.isNumeric(args[0]))
-            shardId = Integer.parseInt(args[0]) - 1;
-        if(shardId >= shardManager.getShardsTotal())
-            shardId = shardManager.getShardsTotal() - 1;
+        int shardId = message.getJDA().getShardInfo().getShardId();
 
         final JDA shard = shardManager.getShards().get(shardId);
 
