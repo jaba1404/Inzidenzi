@@ -38,6 +38,16 @@ public class Saver<T> {
         }
     }
 
+    public void clearEntries(){
+        for (File file : new File(".", "saves").listFiles()) {
+            try {
+                Files.delete(file.toPath());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public boolean hasTodayAsSave(){
         return saveFile.exists();
     }

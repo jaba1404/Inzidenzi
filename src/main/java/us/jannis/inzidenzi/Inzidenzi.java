@@ -1,14 +1,16 @@
 package us.jannis.inzidenzi;
 
 import net.dv8tion.jda.api.JDA;
-import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.requests.GatewayIntent;
+import net.dv8tion.jda.api.sharding.DefaultShardManagerBuilder;
+import net.dv8tion.jda.api.sharding.ShardManager;
 import net.dv8tion.jda.api.utils.ChunkingFilter;
 import net.dv8tion.jda.api.utils.Compression;
 import net.dv8tion.jda.api.utils.MemberCachePolicy;
+import net.dv8tion.jda.api.utils.SessionController;
 import org.reflections8.Reflections;
 import us.jannis.inzidenzi.command.CommandManager;
 import us.jannis.inzidenzi.exception.InitializationException;
@@ -21,10 +23,7 @@ import us.jannis.inzidenzi.util.save.KeyDataSaver;
 import us.jannis.inzidenzi.util.save.StateSaver;
 
 import javax.security.auth.login.LoginException;
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.ArrayList;
@@ -33,7 +32,8 @@ import java.util.List;
 
 public class Inzidenzi {
 
-    private static final JDA JDA;
+    private static final JDA JDA = null;
+    private static final ShardManager SHARD_MANAGER;
     private static final CommandManager COMMAND_MANAGER = new CommandManager();
     private static final List<StateResponse> STATE_RESPONSES = new ArrayList<>();
     private static final List<DistrictResponse> DISTRICT_RESPONSES = new ArrayList<>();
@@ -44,36 +44,16 @@ public class Inzidenzi {
 
     static {
         try {
-            if (DISTRICT_SAVER.hasTodayAsSave()){
-                DISTRICT_RESPONSES.addAll(DISTRICT_SAVER.readEntries());
-            } else {
-                DISTRICT_RESPONSES.addAll(RkiUtil.indexDistricts());
-                DISTRICT_SAVER.saveEntries(DISTRICT_RESPONSES);
-            }
-
-            if (STATE_SAVER.hasTodayAsSave()){
-                STATE_RESPONSES.addAll(STATE_SAVER.readEntries());
-            } else {
-                STATE_RESPONSES.addAll(RkiUtil.indexStates());
-                STATE_SAVER.saveEntries(STATE_RESPONSES);
-            }
-
-            if (KEY_DATA_SAVER.hasTodayAsSave()){
-                KEY_DATA_RESPONSES.addAll(KEY_DATA_SAVER.readEntries());
-            } else {
-                KEY_DATA_RESPONSES.addAll(RkiUtil.indexKeyData());
-                KEY_DATA_SAVER.saveEntries(KEY_DATA_RESPONSES);
-            }
-
+            loadData();
             final EnumSet<GatewayIntent> gatewayIntents = GatewayIntent.getIntents(GatewayIntent.ALL_INTENTS);
             gatewayIntents.remove(GatewayIntent.GUILD_PRESENCES);
             final String token = new String(Files.readAllBytes(new File(new File("."), "artifacts\\token.txt").toPath()), StandardCharsets.UTF_8).trim();
-            final JDABuilder jdaBuilder = JDABuilder.createDefault(token).setChunkingFilter(ChunkingFilter.ALL).setMemberCachePolicy(MemberCachePolicy.ALL).enableIntents(gatewayIntents);
+            final DefaultShardManagerBuilder jdaBuilder = DefaultShardManagerBuilder.createDefault(token).setChunkingFilter(ChunkingFilter.ALL).setMemberCachePolicy(MemberCachePolicy.ALL).enableIntents(gatewayIntents);
             jdaBuilder.setAutoReconnect(true);
             jdaBuilder.setBulkDeleteSplittingEnabled(true);
             jdaBuilder.setStatus(OnlineStatus.ONLINE);
             jdaBuilder.setCompression(Compression.NONE);
-            jdaBuilder.setActivity(Activity.watching("corona database"));
+            jdaBuilder.setActivity(Activity.watching("you wearing a mask"));
             jdaBuilder.setEnabledIntents(gatewayIntents);
             final Reflections reflections = new Reflections("us.jannis.inzidenzi.listener");
             reflections.getSubTypesOf(ListenerAdapter.class).forEach(aClass -> {
@@ -83,12 +63,43 @@ public class Inzidenzi {
                     e.printStackTrace();
                 }
             });
-            JDA = jdaBuilder.build();
+            SHARD_MANAGER = jdaBuilder.build();
         } catch (LoginException e) {
             throw new InitializationException("Could not initialize JDA!\n---Exception---\n" + getStackTrace(e));
         } catch (IOException e) {
             throw new InitializationException(getStackTrace(e));
         }
+    }
+
+    public static void loadData() {
+        try {
+            if (DISTRICT_SAVER.hasTodayAsSave()) {
+                DISTRICT_RESPONSES.addAll(DISTRICT_SAVER.readEntries());
+            } else {
+                DISTRICT_RESPONSES.addAll(RkiUtil.indexDistricts());
+                DISTRICT_SAVER.saveEntries(DISTRICT_RESPONSES);
+            }
+
+            if (STATE_SAVER.hasTodayAsSave()) {
+                STATE_RESPONSES.addAll(STATE_SAVER.readEntries());
+            } else {
+                STATE_RESPONSES.addAll(RkiUtil.indexStates());
+                STATE_SAVER.saveEntries(STATE_RESPONSES);
+            }
+
+            if (KEY_DATA_SAVER.hasTodayAsSave()) {
+                KEY_DATA_RESPONSES.addAll(KEY_DATA_SAVER.readEntries());
+            } else {
+                KEY_DATA_RESPONSES.addAll(RkiUtil.indexKeyData());
+                KEY_DATA_SAVER.saveEntries(KEY_DATA_RESPONSES);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static ShardManager getShardManager() {
+        return SHARD_MANAGER;
     }
 
     public static DistrictSaver getDistrictSaver() {

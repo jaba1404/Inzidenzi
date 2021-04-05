@@ -55,7 +55,6 @@ public class States extends Command {
     private String optionalValue(int value) {
         if (value == 0)
             return "";
-
         return " (+" + value + ")";
     }
     private double round(double value, double decimals) {
