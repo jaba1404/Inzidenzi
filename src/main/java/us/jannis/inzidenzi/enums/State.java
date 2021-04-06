@@ -21,7 +21,7 @@ public enum State {
     @SerializedName(value = "Rheinland-Pfalz", alternate = "7")
     RHEINLAND_PFALZ(7, "Rheinland-Pfalz", "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Coat_of_arms_of_Rhineland-Palatinate.svg/800px-Coat_of_arms_of_Rhineland-Palatinate.svg.png"),
     @SerializedName(value = "Baden-Wuerttemberg", alternate = "8")
-    BADEN_WUERTTEMBERG(8, "Baden-Württemberg", "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Coat_of_arms_of_Baden-W%C3%BCrttemberg_%28lesser%29.svg/800px-Coat_of_arms_of_Baden-W%C3%BCrttemberg_%28lesser%29.svg.png"),
+    BADEN_WUERTTEMBERG(8, "Baden-W\u00fcrttemberg", "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Coat_of_arms_of_Baden-W%C3%BCrttemberg_%28lesser%29.svg/800px-Coat_of_arms_of_Baden-W%C3%BCrttemberg_%28lesser%29.svg.png"),
     @SerializedName(value = "Bayern", alternate = "9")
     BAYERN(9, "Bayern", "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Bayern_Wappen.svg/800px-Bayern_Wappen.svg.png"),
     @SerializedName(value = "Saarland", alternate = "10")
@@ -37,7 +37,7 @@ public enum State {
     @SerializedName(value = "Sachsen-Anhalt", alternate = "15")
     SACHSEN_ANHALT(15, "Sachsen-Anhalt", "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Wappen_Sachsen-Anhalt.svg/800px-Wappen_Sachsen-Anhalt.svg.png"),
     @SerializedName(value = "Thueringen", alternate = "16")
-    THUERINGEN(16, "Thüringen", "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Coat_of_arms_of_Thuringia.svg/800px-Coat_of_arms_of_Thuringia.svg.png");
+    THUERINGEN(16, "Th\u00fcringen", "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Coat_of_arms_of_Thuringia.svg/800px-Coat_of_arms_of_Thuringia.svg.png");
 
 
     private final int id;

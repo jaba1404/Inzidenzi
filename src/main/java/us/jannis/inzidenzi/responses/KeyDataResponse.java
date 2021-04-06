@@ -15,7 +15,7 @@ public class KeyDataResponse {
     @SerializedName("AnzFall")
     private int totalCases;
 
-    @SerializedName("AnzTodesfälle")
+    @SerializedName("AnzTodesf\u00e4lle")
     private int totalDeaths;
 
     @SerializedName("AnzGenesen")

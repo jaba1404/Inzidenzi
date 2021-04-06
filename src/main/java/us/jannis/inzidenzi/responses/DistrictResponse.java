@@ -6,7 +6,7 @@ import us.jannis.inzidenzi.enums.State;
 
 public class DistrictResponse {
 
-    @SerializedName("county")
+    @SerializedName("AdmUnitId")
     private District district;
 
     @SerializedName("BL")

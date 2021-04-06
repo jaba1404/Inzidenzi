@@ -24,7 +24,7 @@ public class Help extends Command {
         embedBuilder.setTitle("Commands: ");
         Inzidenzi.getCommandManager().getCommands().forEach(command -> {
             final String alias = command.aliases.length == 0 ? "" :  Arrays.toString(command.aliases).replace("[", "/").replace("]", "").replace(", ", "/");
-            embedBuilder.addField(CommandManager.PREFIX + command.name + alias + " " + command.getHelp()[0], command.getHelp()[1], false);
+            embedBuilder.addField(CommandManager.getPrefix(message) + command.name + alias + " " + command.getHelp()[0], command.getHelp()[1], false);
         });
         embedBuilder.setColor(Color.green);
         messageChannel.sendMessage(embedBuilder.build()).queue();

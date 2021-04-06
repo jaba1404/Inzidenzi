@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 public enum Gender {
 
     @SerializedName("M")
-    MALE("M", "Männlich"),
+    MALE("M", "M\u00e4nnlich"),
 
     @SerializedName("W")
     FEMALE("W", "Weiblich");

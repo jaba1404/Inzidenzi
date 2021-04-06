@@ -15,7 +15,9 @@ public class RkiUtil {
 
     public static List<DistrictResponse> indexDistricts() throws IOException {
         final List<DistrictResponse> districtResponses = new ArrayList<>();
-        final HttpResponse httpResponse = HttpUtil.getRequest("https://services7.arcgis.com/mOBPykOjAyBO2ZKk/arcgis/rest/services/RKI_Landkreisdaten/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json", new HashMap<>());
+        final HttpResponse httpResponse = HttpUtil.getRequest("https://services7.arcgis.com/mOBPykOjAyBO2ZKk/arcgis/rest/services/RKI_Landkreisdaten/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json", new HashMap<String, String>(){{
+            put("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
+        }});
         for (Object o : HttpUtil.toJSONObject(httpResponse).getJSONArray("features")) {
             if (o instanceof JSONObject) {
                 districtResponses.add((DistrictResponse) HttpUtil.toObjectAscii(((JSONObject) o).getJSONObject("attributes"), DistrictResponse.class));
@@ -26,7 +28,9 @@ public class RkiUtil {
 
     public static  List<StateResponse> indexStates() throws IOException {
         final List<StateResponse> stateResponses = new ArrayList<>();
-        final HttpResponse httpResponse = HttpUtil.getRequest("https://services7.arcgis.com/mOBPykOjAyBO2ZKk/arcgis/rest/services/Coronaf%C3%A4lle_in_den_Bundesl%C3%A4ndern/FeatureServer/0/query?where=1%3D1&outFields=*&returnGeometry=false&outSR=4326&f=json", new HashMap<>());
+        final HttpResponse httpResponse = HttpUtil.getRequest("https://services7.arcgis.com/mOBPykOjAyBO2ZKk/arcgis/rest/services/Coronaf%C3%A4lle_in_den_Bundesl%C3%A4ndern/FeatureServer/0/query?where=1%3D1&outFields=*&returnGeometry=false&outSR=4326&f=json", new HashMap<String, String>(){{
+            put("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
+        }});
         for (Object o : HttpUtil.toJSONObject(httpResponse).getJSONArray("features")) {
             if (o instanceof JSONObject) {
                 stateResponses.add((StateResponse) HttpUtil.toObjectAscii(((JSONObject) o).getJSONObject("attributes"), StateResponse.class));
@@ -37,7 +41,9 @@ public class RkiUtil {
 
     public static  List<KeyDataResponse> indexKeyData() throws IOException {
         final List<KeyDataResponse> keyDataResponses = new ArrayList<>();
-        final HttpResponse httpResponse = HttpUtil.getRequest("https://services7.arcgis.com/mOBPykOjAyBO2ZKk/arcgis/rest/services/rki_key_data_hubv/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json", new HashMap<>());
+        final HttpResponse httpResponse = HttpUtil.getRequest("https://services7.arcgis.com/mOBPykOjAyBO2ZKk/arcgis/rest/services/rki_key_data_hubv/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json", new HashMap<String, String>(){{
+            put("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
+        }});
         for (Object o : HttpUtil.toJSONObject(httpResponse).getJSONArray("features")) {
             if (o instanceof JSONObject) {
                 keyDataResponses.add((KeyDataResponse) HttpUtil.toObjectAscii(((JSONObject) o).getJSONObject("attributes"), KeyDataResponse.class));
@@ -45,21 +51,5 @@ public class RkiUtil {
         }
         return keyDataResponses;
     }
-
-
-
-   /* private boolean match(String text, String[] keys) {
-        boolean ready = false;
-        final JaroWinklerDistance jaroWinklerDistance = new JaroWinklerDistance();
-        for (final String s : text.split(" ")) {
-            for (final String k : keys) {
-                if (jaroWinklerDistance.apply(s, k) > Math.max(Math.min((threshold.getValue() / 100), 1.0), 0.7)) {
-                    ready = true;
-                    break;
-                }
-            }
-        }
-        return ready;
-    }*/
 
 }

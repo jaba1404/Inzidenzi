@@ -9,8 +9,6 @@ import us.jannis.inzidenzi.enums.State;
 public class AttributeResponse {
 
     @SerializedName("IdBundesland")
-    private int stateId;
-    @SerializedName("Bundesland")
     private State state;
     @SerializedName("Landkreis")
     private District district;
@@ -48,7 +46,6 @@ public class AttributeResponse {
     @Override
     public String toString() {
         return "AttributeResponse{" +
-                "stateId=" + stateId +
                 ", state='" + state + '\'' +
                 ", district=" + district +
                 ", ageGroup=" + ageGroup +
@@ -69,9 +66,6 @@ public class AttributeResponse {
                 '}';
     }
 
-    public int getStateId() {
-        return stateId;
-    }
 
     public State getState() {
         return state;

@@ -11,9 +11,9 @@ public enum District {
     @SerializedName(value = "SK Kiel", alternate = "1002")
     SK_KIEL(1002, "SK Kiel"),
     @SerializedName(value = "SK Luebeck", alternate = "1003")
-    SK_LUEBECK(1003, "SK Lübeck"),
+    SK_LUEBECK(1003, "SK L\u00fcbeck"),
     @SerializedName(value = "SK Neumuenster", alternate = "1004")
-    SK_NEUMUENSTER(1004, "SK Neumünster"),
+    SK_NEUMUENSTER(1004, "SK Neum\u00fcnster"),
     @SerializedName(value = "LK Dithmarschen", alternate = "1051")
     LK_DITHMARSCHEN(1051, "LK Dithmarschen"),
     @SerializedName(value = "LK Herzogtum Lauenburg", alternate = "1053")
@@ -25,9 +25,9 @@ public enum District {
     @SerializedName(value = "LK Pinneberg", alternate = "1056")
     LK_PINNEBERG(1056, "LK Pinneberg"),
     @SerializedName(value = "LK Ploen", alternate = "1057")
-    LK_PLOEN(1057, "LK Plön"),
+    LK_PLOEN(1057, "LK Pl\u00f6n"),
     @SerializedName(value = "LK Rendsburg-Eckernfoerde", alternate = "1058")
-    LK_RENDSBURG_ECKERNFOERDE(1058, "LK Rendsburg-Eckernförde"),
+    LK_RENDSBURG_ECKERNFOERDE(1058, "LK Rendsburg-Eckernf\u00f6rde"),
     @SerializedName(value = "LK Schleswig-Flensburg", alternate = "1059")
     LK_SCHLESWIG_FLENSBURG(1059, "LK Schleswig-Flensburg"),
     @SerializedName(value = "LK Segeberg", alternate = "1060")
@@ -55,9 +55,9 @@ public enum District {
     @SerializedName(value = "LK Peine", alternate = "3157")
     LK_PEINE(3157, "LK Peine"),
     @SerializedName(value = "LK Wolfenbuettel", alternate = "3158")
-    LK_WOLFENBUETTEL(3158, "LK Wolfenbüttel"),
+    LK_WOLFENBUETTEL(3158, "LK Wolfenb\u00fcttel"),
     @SerializedName(value = "LK Goettingen", alternate = "3159")
-    LK_GOETTINGEN(3159, "LK Göttingen"),
+    LK_GOETTINGEN(3159, "LK G\u00f6ttingen"),
     @SerializedName(value = "Region Hannover", alternate = "3241")
     REGION_HANNOVER(3241, "Region Hannover"),
     @SerializedName(value = "LK Diepholz", alternate = "3251")
@@ -79,13 +79,13 @@ public enum District {
     @SerializedName(value = "LK Harburg", alternate = "3353")
     LK_HARBURG(3353, "LK Harburg"),
     @SerializedName(value = "LK Luechow-Dannenberg", alternate = "3354")
-    LK_LUECHOW_DANNENBERG(3354, "LK Lüchow-Dannenberg"),
+    LK_LUECHOW_DANNENBERG(3354, "LK L\u00fcchow-Dannenberg"),
     @SerializedName(value = "LK Lueneburg", alternate = "3355")
-    LK_LUENEBURG(3355, "LK Lüneburg"),
+    LK_LUENEBURG(3355, "LK L\u00fcneburg"),
     @SerializedName(value = "LK Osterholz", alternate = "3356")
     LK_OSTERHOLZ(3356, "LK Osterholz"),
     @SerializedName(value = "LK Rotenburg (Wuemme)", alternate = "3357")
-    LK_ROTENBURG_WUEMME(3357, "LK Rotenburg (Wümme)"),
+    LK_ROTENBURG_WUEMME(3357, "LK Rotenburg (W\u00fcmme)"),
     @SerializedName(value = "LK Heidekreis", alternate = "3358")
     LK_HEIDEKREIS(3358, "LK Heidekreis"),
     @SerializedName(value = "LK Stade", alternate = "3359")
@@ -101,7 +101,7 @@ public enum District {
     @SerializedName(value = "SK Oldenburg", alternate = "3403")
     SK_OLDENBURG(3403, "SK Oldenburg"),
     @SerializedName(value = "SK Osnabrueck", alternate = "3404")
-    SK_OSNABRUECK(3404, "SK Osnabrück"),
+    SK_OSNABRUECK(3404, "SK Osnabr\u00fcck"),
     @SerializedName(value = "SK Wilhelmshaven", alternate = "3405")
     SK_WILHELMSHAVEN(3405, "SK Wilhelmshaven"),
     @SerializedName(value = "LK Ammerland", alternate = "3451")
@@ -121,7 +121,7 @@ public enum District {
     @SerializedName(value = "LK Oldenburg", alternate = "3458")
     LK_OLDENBURG(3458, "LK Oldenburg"),
     @SerializedName(value = "LK Osnabrueck", alternate = "3459")
-    LK_OSNABRUECK(3459, "LK Osnabrück"),
+    LK_OSNABRUECK(3459, "LK Osnabr\u00fcck"),
     @SerializedName(value = "LK Vechta", alternate = "3460")
     LK_VECHTA(3460, "LK Vechta"),
     @SerializedName(value = "LK Wesermarsch", alternate = "3461")
@@ -133,7 +133,7 @@ public enum District {
     @SerializedName(value = "SK Bremerhaven", alternate = "4012")
     SK_BREMERHAVEN(4012, "SK Bremerhaven"),
     @SerializedName(value = "SK Duesseldorf", alternate = "5111")
-    SK_DUESSELDORF(5111, "SK Düsseldorf"),
+    SK_DUESSELDORF(5111, "SK D\u00fcsseldorf"),
     @SerializedName(value = "SK Duisburg", alternate = "5112")
     SK_DUISBURG(5112, "SK Duisburg"),
     @SerializedName(value = "SK Essen", alternate = "5113")
@@ -141,9 +141,9 @@ public enum District {
     @SerializedName(value = "SK Krefeld", alternate = "5114")
     SK_KREFELD(5114, "SK Krefeld"),
     @SerializedName(value = "SK Moenchengladbach", alternate = "5116")
-    SK_MOENCHENGLADBACH(5116, "SK Mönchengladbach"),
+    SK_MOENCHENGLADBACH(5116, "SK M\u00f6nchengladbach"),
     @SerializedName(value = "SK Muelheim a.d.Ruhr", alternate = "5117")
-    SK_MUELHEIM_A_D_RUHR(5117, "SK Mülheim a.d.Ruhr"),
+    SK_MUELHEIM_A_D_RUHR(5117, "SK M\u00fclheim a.d.Ruhr"),
     @SerializedName(value = "SK Oberhausen", alternate = "5119")
     SK_OBERHAUSEN(5119, "SK Oberhausen"),
     @SerializedName(value = "SK Remscheid", alternate = "5120")
@@ -165,13 +165,13 @@ public enum District {
     @SerializedName(value = "SK Bonn", alternate = "5314")
     SK_BONN(5314, "SK Bonn"),
     @SerializedName(value = "SK Koeln", alternate = "5315")
-    SK_KOELN(5315, "SK Köln"),
+    SK_KOELN(5315, "SK K\u00f6ln"),
     @SerializedName(value = "SK Leverkusen", alternate = "5316")
     SK_LEVERKUSEN(5316, "SK Leverkusen"),
     @SerializedName(value = "StadtRegion Aachen", alternate = "5334")
     STADTREGION_AACHEN(5334, "StadtRegion Aachen"),
     @SerializedName(value = "LK Dueren", alternate = "5358")
-    LK_DUEREN(5358, "LK Düren"),
+    LK_DUEREN(5358, "LK D\u00fcren"),
     @SerializedName(value = "LK Rhein-Erft-Kreis", alternate = "5362")
     LK_RHEIN_ERFT_KREIS(5362, "LK Rhein-Erft-Kreis"),
     @SerializedName(value = "LK Euskirchen", alternate = "5366")
@@ -189,7 +189,7 @@ public enum District {
     @SerializedName(value = "SK Gelsenkirchen", alternate = "5513")
     SK_GELSENKIRCHEN(5513, "SK Gelsenkirchen"),
     @SerializedName(value = "SK Muenster", alternate = "5515")
-    SK_MUENSTER(5515, "SK Münster"),
+    SK_MUENSTER(5515, "SK M\u00fcnster"),
     @SerializedName(value = "LK Borken", alternate = "5554")
     LK_BORKEN(5554, "LK Borken"),
     @SerializedName(value = "LK Coesfeld", alternate = "5558")
@@ -203,15 +203,15 @@ public enum District {
     @SerializedName(value = "SK Bielefeld", alternate = "5711")
     SK_BIELEFELD(5711, "SK Bielefeld"),
     @SerializedName(value = "LK Guetersloh", alternate = "5754")
-    LK_GUETERSLOH(5754, "LK Gütersloh"),
+    LK_GUETERSLOH(5754, "LK G\u00fctersloh"),
     @SerializedName(value = "LK Herford", alternate = "5758")
     LK_HERFORD(5758, "LK Herford"),
     @SerializedName(value = "LK Hoexter", alternate = "5762")
-    LK_HOEXTER(5762, "LK Höxter"),
+    LK_HOEXTER(5762, "LK H\u00f6xter"),
     @SerializedName(value = "LK Lippe", alternate = "5766")
     LK_LIPPE(5766, "LK Lippe"),
     @SerializedName(value = "LK Minden-Luebbecke", alternate = "5770")
-    LK_MINDEN_LUEBBECKE(5770, "LK Minden-Lübbecke"),
+    LK_MINDEN_LUEBBECKE(5770, "LK Minden-L\u00fcbbecke"),
     @SerializedName(value = "LK Paderborn", alternate = "5774")
     LK_PADERBORN(5774, "LK Paderborn"),
     @SerializedName(value = "SK Bochum", alternate = "5911")
@@ -229,7 +229,7 @@ public enum District {
     @SerializedName(value = "LK Hochsauerlandkreis", alternate = "5958")
     LK_HOCHSAUERLANDKREIS(5958, "LK Hochsauerlandkreis"),
     @SerializedName(value = "LK Maerkischer Kreis", alternate = "5962")
-    LK_MAERKISCHER_KREIS(5962, "LK Märkischer Kreis"),
+    LK_MAERKISCHER_KREIS(5962, "LK M\u00e4rkischer Kreis"),
     @SerializedName(value = "LK Olpe", alternate = "5966")
     LK_OLPE(5966, "LK Olpe"),
     @SerializedName(value = "LK Siegen-Wittgenstein", alternate = "5970")
@@ -307,7 +307,7 @@ public enum District {
     @SerializedName(value = "LK Neuwied", alternate = "7138")
     LK_NEUWIED(7138, "LK Neuwied"),
     @SerializedName(value = "LK Rhein-Hunsrueck-Kreis", alternate = "7140")
-    LK_RHEIN_HUNSRUECK_KREIS(7140, "LK Rhein-Hunsrück-Kreis"),
+    LK_RHEIN_HUNSRUECK_KREIS(7140, "LK Rhein-Hunsr\u00fcck-Kreis"),
     @SerializedName(value = "LK Rhein-Lahn-Kreis", alternate = "7141")
     LK_RHEIN_LAHN_KREIS(7141, "LK Rhein-Lahn-Kreis"),
     @SerializedName(value = "LK Westerwaldkreis", alternate = "7143")
@@ -317,7 +317,7 @@ public enum District {
     @SerializedName(value = "LK Bernkastel-Wittlich", alternate = "7231")
     LK_BERNKASTEL_WITTLICH(7231, "LK Bernkastel-Wittlich"),
     @SerializedName(value = "LK Bitburg-Pruem", alternate = "7232")
-    LK_BITBURG_PRUEM(7232, "LK Bitburg-Prüm"),
+    LK_BITBURG_PRUEM(7232, "LK Bitburg-Pr\u00fcm"),
     @SerializedName(value = "LK Vulkaneifel", alternate = "7233")
     LK_VULKANEIFEL(7233, "LK Vulkaneifel"),
     @SerializedName(value = "LK Trier-Saarburg", alternate = "7235")
@@ -341,11 +341,11 @@ public enum District {
     @SerializedName(value = "SK Worms", alternate = "7319")
     SK_WORMS(7319, "SK Worms"),
     @SerializedName(value = "SK Zweibruecken", alternate = "7320")
-    SK_ZWEIBRUECKEN(7320, "SK Zweibrücken"),
+    SK_ZWEIBRUECKEN(7320, "SK Zweibr\u00fccken"),
     @SerializedName(value = "LK Alzey-Worms", alternate = "7331")
     LK_ALZEY_WORMS(7331, "LK Alzey-Worms"),
     @SerializedName(value = "LK Bad Duerkheim", alternate = "7332")
-    LK_BAD_DUERKHEIM(7332, "LK Bad Dürkheim"),
+    LK_BAD_DUERKHEIM(7332, "LK Bad D\u00fcrkheim"),
     @SerializedName(value = "LK Donnersbergkreis", alternate = "7333")
     LK_DONNERSBERGKREIS(7333, "LK Donnersbergkreis"),
     @SerializedName(value = "LK Germersheim", alternate = "7334")
@@ -355,21 +355,21 @@ public enum District {
     @SerializedName(value = "LK Kusel", alternate = "7336")
     LK_KUSEL(7336, "LK Kusel"),
     @SerializedName(value = "LK Suedliche Weinstrasse", alternate = "7337")
-    LK_SUEDLICHE_WEINSTRASSE(7337, "LK Südliche Weinstraße"),
+    LK_SUEDLICHE_WEINSTRASSE(7337, "LK S\u00fcdliche Weinstraße"),
     @SerializedName(value = "LK Rhein-Pfalz-Kreis", alternate = "7338")
     LK_RHEIN_PFALZ_KREIS(7338, "LK Rhein-Pfalz-Kreis"),
     @SerializedName(value = "LK Mainz-Bingen", alternate = "7339")
     LK_MAINZ_BINGEN(7339, "LK Mainz-Bingen"),
     @SerializedName(value = "LK Suedwestpfalz", alternate = "7340")
-    LK_SUEDWESTPFALZ(7340, "LK Südwestpfalz"),
+    LK_SUEDWESTPFALZ(7340, "LK S\u00fcdwestpfalz"),
     @SerializedName(value = "SK Stuttgart", alternate = "8111")
     SK_STUTTGART(8111, "SK Stuttgart"),
     @SerializedName(value = "LK Boeblingen", alternate = "8115")
-    LK_BOEBLINGEN(8115, "LK Böblingen"),
+    LK_BOEBLINGEN(8115, "LK B\u00f6blingen"),
     @SerializedName(value = "LK Esslingen", alternate = "8116")
     LK_ESSLINGEN(8116, "LK Esslingen"),
     @SerializedName(value = "LK Goeppingen", alternate = "8117")
-    LK_GOEPPINGEN(8117, "LK Göppingen"),
+    LK_GOEPPINGEN(8117, "LK G\u00f6ppingen"),
     @SerializedName(value = "LK Ludwigsburg", alternate = "8118")
     LK_LUDWIGSBURG(8118, "LK Ludwigsburg"),
     @SerializedName(value = "LK Rems-Murr-Kreis", alternate = "8119")
@@ -381,7 +381,7 @@ public enum District {
     @SerializedName(value = "LK Hohenlohekreis", alternate = "8126")
     LK_HOHENLOHEKREIS(8126, "LK Hohenlohekreis"),
     @SerializedName(value = "LK Schwaebisch Hall", alternate = "8127")
-    LK_SCHWAEBISCH_HALL(8127, "LK Schwäbisch Hall"),
+    LK_SCHWAEBISCH_HALL(8127, "LK Schw\u00e4bisch Hall"),
     @SerializedName(value = "LK Main-Tauber-Kreis", alternate = "8128")
     LK_MAIN_TAUBER_KREIS(8128, "LK Main-Tauber-Kreis"),
     @SerializedName(value = "LK Heidenheim", alternate = "8135")
@@ -429,13 +429,13 @@ public enum District {
     @SerializedName(value = "LK Konstanz", alternate = "8335")
     LK_KONSTANZ(8335, "LK Konstanz"),
     @SerializedName(value = "LK Loerrach", alternate = "8336")
-    LK_LOERRACH(8336, "LK Lörrach"),
+    LK_LOERRACH(8336, "LK L\u00f6rrach"),
     @SerializedName(value = "LK Waldshut", alternate = "8337")
     LK_WALDSHUT(8337, "LK Waldshut"),
     @SerializedName(value = "LK Reutlingen", alternate = "8415")
     LK_REUTLINGEN(8415, "LK Reutlingen"),
     @SerializedName(value = "LK Tuebingen", alternate = "8416")
-    LK_TUEBINGEN(8416, "LK Tübingen"),
+    LK_TUEBINGEN(8416, "LK T\u00fcbingen"),
     @SerializedName(value = "LK Zollernalbkreis", alternate = "8417")
     LK_ZOLLERNALBKREIS(8417, "LK Zollernalbkreis"),
     @SerializedName(value = "SK Ulm", alternate = "8421")
@@ -453,27 +453,27 @@ public enum District {
     @SerializedName(value = "SK Ingolstadt", alternate = "9161")
     SK_INGOLSTADT(9161, "SK Ingolstadt"),
     @SerializedName(value = "SK Muenchen", alternate = "9162")
-    SK_MUENCHEN(9162, "SK München"),
+    SK_MUENCHEN(9162, "SK M\u00fcnchen"),
     @SerializedName(value = "SK Rosenheim", alternate = "9163")
     SK_ROSENHEIM(9163, "SK Rosenheim"),
     @SerializedName(value = "LK Altoetting", alternate = "9171")
-    LK_ALTOETTING(9171, "LK Altötting"),
+    LK_ALTOETTING(9171, "LK Alt\u00f6tting"),
     @SerializedName(value = "LK Berchtesgadener Land", alternate = "9172")
     LK_BERCHTESGADENER_LAND(9172, "LK Berchtesgadener Land"),
     @SerializedName(value = "LK Bad Toelz-Wolfratshausen", alternate = "9173")
-    LK_BAD_TOELZ_WOLFRATSHAUSEN(9173, "LK Bad Tölz-Wolfratshausen"),
+    LK_BAD_TOELZ_WOLFRATSHAUSEN(9173, "LK Bad T\u00f6lz-Wolfratshausen"),
     @SerializedName(value = "LK Dachau", alternate = "9174")
     LK_DACHAU(9174, "LK Dachau"),
     @SerializedName(value = "LK Ebersberg", alternate = "9175")
     LK_EBERSBERG(9175, "LK Ebersberg"),
     @SerializedName(value = "LK Eichstaett", alternate = "9176")
-    LK_EICHSTAETT(9176, "LK Eichstätt"),
+    LK_EICHSTAETT(9176, "LK Eichst\u00e4tt"),
     @SerializedName(value = "LK Erding", alternate = "9177")
     LK_ERDING(9177, "LK Erding"),
     @SerializedName(value = "LK Freising", alternate = "9178")
     LK_FREISING(9178, "LK Freising"),
     @SerializedName(value = "LK Fuerstenfeldbruck", alternate = "9179")
-    LK_FUERSTENFELDBRUCK(9179, "LK Fürstenfeldbruck"),
+    LK_FUERSTENFELDBRUCK(9179, "LK F\u00fcrstenfeldbruck"),
     @SerializedName(value = "LK Garmisch-Partenkirchen", alternate = "9180")
     LK_GARMISCH_PARTENKIRCHEN(9180, "LK Garmisch-Partenkirchen"),
     @SerializedName(value = "LK Landsberg a.Lech", alternate = "9181")
@@ -481,9 +481,9 @@ public enum District {
     @SerializedName(value = "LK Miesbach", alternate = "9182")
     LK_MIESBACH(9182, "LK Miesbach"),
     @SerializedName(value = "LK Muehldorf a.Inn", alternate = "9183")
-    LK_MUEHLDORF_A_INN(9183, "LK Mühldorf a.Inn"),
+    LK_MUEHLDORF_A_INN(9183, "LK M\u00fchldorf a.Inn"),
     @SerializedName(value = "LK Muenchen", alternate = "9184")
-    LK_MUENCHEN(9184, "LK München"),
+    LK_MUENCHEN(9184, "LK M\u00fcnchen"),
     @SerializedName(value = "LK Neuburg-Schrobenhausen", alternate = "9185")
     LK_NEUBURG_SCHROBENHAUSEN(9185, "LK Neuburg-Schrobenhausen"),
     @SerializedName(value = "LK Pfaffenhofen a.d.Ilm", alternate = "9186")
@@ -571,19 +571,19 @@ public enum District {
     @SerializedName(value = "SK Erlangen", alternate = "9562")
     SK_ERLANGEN(9562, "SK Erlangen"),
     @SerializedName(value = "SK Fuerth", alternate = "9563")
-    SK_FUERTH(9563, "SK Fürth"),
+    SK_FUERTH(9563, "SK F\u00fcrth"),
     @SerializedName(value = "SK Nuernberg", alternate = "9564")
-    SK_NUERNBERG(9564, "SK Nürnberg"),
+    SK_NUERNBERG(9564, "SK N\u00fcrnberg"),
     @SerializedName(value = "SK Schwabach", alternate = "9565")
     SK_SCHWABACH(9565, "SK Schwabach"),
     @SerializedName(value = "LK Ansbach", alternate = "9571")
     LK_ANSBACH(9571, "LK Ansbach"),
     @SerializedName(value = "LK Erlangen-Hoechstadt", alternate = "9572")
-    LK_ERLANGEN_HOECHSTADT(9572, "LK Erlangen-Höchstadt"),
+    LK_ERLANGEN_HOECHSTADT(9572, "LK Erlangen-H\u00f6chstadt"),
     @SerializedName(value = "LK Fuerth", alternate = "9573")
-    LK_FUERTH(9573, "LK Fürth"),
+    LK_FUERTH(9573, "LK F\u00fcrth"),
     @SerializedName(value = "LK Nuernberger Land", alternate = "9574")
-    LK_NUERNBERGER_LAND(9574, "LK Nürnberger Land"),
+    LK_NUERNBERGER_LAND(9574, "LK N\u00fcrnberger Land"),
     @SerializedName(value = "LK Neustadt a.d.Aisch-Bad Windsheim", alternate = "9575")
     LK_NEUSTADT_A_D_AISCH_BAD_WINDSHEIM(9575, "LK Neustadt a.d.Aisch-Bad Windsheim"),
     @SerializedName(value = "LK Roth", alternate = "9576")
@@ -595,13 +595,13 @@ public enum District {
     @SerializedName(value = "SK Schweinfurt", alternate = "9662")
     SK_SCHWEINFURT(9662, "SK Schweinfurt"),
     @SerializedName(value = "SK Wuerzburg", alternate = "9663")
-    SK_WUERZBURG(9663, "SK Würzburg"),
+    SK_WUERZBURG(9663, "SK W\u00fcrzburg"),
     @SerializedName(value = "LK Aschaffenburg", alternate = "9671")
     LK_ASCHAFFENBURG(9671, "LK Aschaffenburg"),
     @SerializedName(value = "LK Bad Kissingen", alternate = "9672")
     LK_BAD_KISSINGEN(9672, "LK Bad Kissingen"),
     @SerializedName(value = "LK Rhoen-Grabfeld", alternate = "9673")
-    LK_RHOEN_GRABFELD(9673, "LK Rhön-Grabfeld"),
+    LK_RHOEN_GRABFELD(9673, "LK Rh\u00f6n-Grabfeld"),
     @SerializedName(value = "LK Hassberge", alternate = "9674")
     LK_HASSBERGE(9674, "LK Haßberge"),
     @SerializedName(value = "LK Kitzingen", alternate = "9675")
@@ -613,7 +613,7 @@ public enum District {
     @SerializedName(value = "LK Schweinfurt", alternate = "9678")
     LK_SCHWEINFURT(9678, "LK Schweinfurt"),
     @SerializedName(value = "LK Wuerzburg", alternate = "9679")
-    LK_WUERZBURG(9679, "LK Würzburg"),
+    LK_WUERZBURG(9679, "LK W\u00fcrzburg"),
     @SerializedName(value = "SK Augsburg", alternate = "9761")
     SK_AUGSBURG(9761, "SK Augsburg"),
     @SerializedName(value = "SK Kaufbeuren", alternate = "9762")
@@ -629,21 +629,21 @@ public enum District {
     @SerializedName(value = "LK Dillingen a.d.Donau", alternate = "9773")
     LK_DILLINGEN_A_D_DONAU(9773, "LK Dillingen a.d.Donau"),
     @SerializedName(value = "LK Guenzburg", alternate = "9774")
-    LK_GUENZBURG(9774, "LK Günzburg"),
+    LK_GUENZBURG(9774, "LK G\u00fcnzburg"),
     @SerializedName(value = "LK Neu-Ulm", alternate = "9775")
     LK_NEU_ULM(9775, "LK Neu-Ulm"),
     @SerializedName(value = "LK Lindau", alternate = "9776")
     LK_LINDAU(9776, "LK Lindau"),
     @SerializedName(value = "LK Ostallgaeu", alternate = "9777")
-    LK_OSTALLGAEU(9777, "LK Ostallgäu"),
+    LK_OSTALLGAEU(9777, "LK Ostallg\u00e4u"),
     @SerializedName(value = "LK Unterallgaeu", alternate = "9778")
-    LK_UNTERALLGAEU(9778, "LK Unterallgäu"),
+    LK_UNTERALLGAEU(9778, "LK Unterallg\u00e4u"),
     @SerializedName(value = "LK Donau-Ries", alternate = "9779")
     LK_DONAU_RIES(9779, "LK Donau-Ries"),
     @SerializedName(value = "LK Oberallgaeu", alternate = "9780")
-    LK_OBERALLGAEU(9780, "LK Oberallgäu"),
+    LK_OBERALLGAEU(9780, "LK Oberallg\u00e4u"),
     @SerializedName(value = "LK Stadtverband Saarbruecken", alternate = "10041")
-    LK_STADTVERBAND_SAARBRUECKEN(10041, "LK Stadtverband Saarbrücken"),
+    LK_STADTVERBAND_SAARBRUECKEN(10041, "LK Stadtverband Saarbr\u00fccken"),
     @SerializedName(value = "LK Merzig-Wadern", alternate = "10042")
     LK_MERZIG_WADERN(10042, "LK Merzig-Wadern"),
     @SerializedName(value = "LK Neunkirchen", alternate = "10043")
@@ -671,7 +671,7 @@ public enum District {
     @SerializedName(value = "LK Havelland", alternate = "12063")
     LK_HAVELLAND(12063, "LK Havelland"),
     @SerializedName(value = "LK Maerkisch-Oderland", alternate = "12064")
-    LK_MAERKISCH_ODERLAND(12064, "LK Märkisch-Oderland"),
+    LK_MAERKISCH_ODERLAND(12064, "LK M\u00e4rkisch-Oderland"),
     @SerializedName(value = "LK Oberhavel", alternate = "12065")
     LK_OBERHAVEL(12065, "LK Oberhavel"),
     @SerializedName(value = "LK Oberspreewald-Lausitz", alternate = "12066")
@@ -687,7 +687,7 @@ public enum District {
     @SerializedName(value = "LK Spree-Neisse", alternate = "12071")
     LK_SPREE_NEISSE(12071, "LK Spree-Neiße"),
     @SerializedName(value = "LK Teltow-Flaeming", alternate = "12072")
-    LK_TELTOW_FLAEMING(12072, "LK Teltow-Fläming"),
+    LK_TELTOW_FLAEMING(12072, "LK Teltow-Fl\u00e4ming"),
     @SerializedName(value = "LK Uckermark", alternate = "12073")
     LK_UCKERMARK(12073, "LK Uckermark"),
     @SerializedName(value = "SK Rostock", alternate = "13003")
@@ -699,7 +699,7 @@ public enum District {
     @SerializedName(value = "LK Rostock", alternate = "13072")
     LK_ROSTOCK(13072, "LK Rostock"),
     @SerializedName(value = "LK Vorpommern-Ruegen", alternate = "13073")
-    LK_VORPOMMERN_RUEGEN(13073, "LK Vorpommern-Rügen"),
+    LK_VORPOMMERN_RUEGEN(13073, "LK Vorpommern-R\u00fcgen"),
     @SerializedName(value = "LK Nordwestmecklenburg", alternate = "13074")
     LK_NORDWESTMECKLENBURG(13074, "LK Nordwestmecklenburg"),
     @SerializedName(value = "LK Vorpommern-Greifswald", alternate = "13075")
@@ -721,11 +721,11 @@ public enum District {
     @SerializedName(value = "LK Bautzen", alternate = "14625")
     LK_BAUTZEN(14625, "LK Bautzen"),
     @SerializedName(value = "LK Goerlitz", alternate = "14626")
-    LK_GOERLITZ(14626, "LK Görlitz"),
+    LK_GOERLITZ(14626, "LK G\u00f6rlitz"),
     @SerializedName(value = "LK Meissen", alternate = "14627")
     LK_MEISSEN(14627, "LK Meißen"),
     @SerializedName(value = "LK Saechsische Schweiz-Osterzgebirge", alternate = "14628")
-    LK_SAECHSISCHE_SCHWEIZ_OSTERZGEBIRGE(14628, "LK Sächsische Schweiz-Osterzgebirge"),
+    LK_SAECHSISCHE_SCHWEIZ_OSTERZGEBIRGE(14628, "LK S\u00e4chsische Schweiz-Osterzgebirge"),
     @SerializedName(value = "SK Leipzig", alternate = "14713")
     SK_LEIPZIG(14713, "SK Leipzig"),
     @SerializedName(value = "LK Leipzig", alternate = "14729")
@@ -743,7 +743,7 @@ public enum District {
     @SerializedName(value = "LK Anhalt-Bitterfeld", alternate = "15082")
     LK_ANHALT_BITTERFELD(15082, "LK Anhalt-Bitterfeld"),
     @SerializedName(value = "LK Boerde", alternate = "15083")
-    LK_BOERDE(15083, "LK Börde"),
+    LK_BOERDE(15083, "LK B\u00f6rde"),
     @SerializedName(value = "LK Burgenlandkreis", alternate = "15084")
     LK_BURGENLANDKREIS(15084, "LK Burgenlandkreis"),
     @SerializedName(value = "LK Harz", alternate = "15085")
@@ -751,7 +751,7 @@ public enum District {
     @SerializedName(value = "LK Jerichower Land", alternate = "15086")
     LK_JERICHOWER_LAND(15086, "LK Jerichower Land"),
     @SerializedName(value = "LK Mansfeld-Suedharz", alternate = "15087")
-    LK_MANSFELD_SUEDHARZ(15087, "LK Mansfeld-Südharz"),
+    LK_MANSFELD_SUEDHARZ(15087, "LK Mansfeld-S\u00fcdharz"),
     @SerializedName(value = "LK Saalekreis", alternate = "15088")
     LK_SAALEKREIS(15088, "LK Saalekreis"),
     @SerializedName(value = "LK Salzlandkreis", alternate = "15089")
@@ -781,13 +781,13 @@ public enum District {
     @SerializedName(value = "LK Unstrut-Hainich-Kreis", alternate = "16064")
     LK_UNSTRUT_HAINICH_KREIS(16064, "LK Unstrut-Hainich-Kreis"),
     @SerializedName(value = "LK Kyffhaeuserkreis", alternate = "16065")
-    LK_KYFFHAEUSERKREIS(16065, "LK Kyffhäuserkreis"),
+    LK_KYFFHAEUSERKREIS(16065, "LK Kyffh\u00e4userkreis"),
     @SerializedName(value = "LK Schmalkalden-Meiningen", alternate = "16066")
     LK_SCHMALKALDEN_MEININGEN(16066, "LK Schmalkalden-Meiningen"),
     @SerializedName(value = "LK Gotha", alternate = "16067")
     LK_GOTHA(16067, "LK Gotha"),
     @SerializedName(value = "LK Soemmerda", alternate = "16068")
-    LK_SOEMMERDA(16068, "LK Sömmerda"),
+    LK_SOEMMERDA(16068, "LK S\u00f6mmerda"),
     @SerializedName(value = "LK Hildburghausen", alternate = "16069")
     LK_HILDBURGHAUSEN(16069, "LK Hildburghausen"),
     @SerializedName(value = "LK Ilm-Kreis", alternate = "16070")
@@ -811,11 +811,11 @@ public enum District {
     @SerializedName(value = "SK Berlin Charlottenburg-Wilmersdorf", alternate = "11004")
     SK_BERLIN_CHARLOTTENBURG_WILMERSDORF(11004, "SK Berlin Charlottenburg-Wilmersdorf"),
     @SerializedName(value = "SK Berlin Treptow-Koepenick", alternate = "11009")
-    SK_BERLIN_TREPTOW_KOEPENICK(11009, "SK Berlin Treptow-Köpenick"),
+    SK_BERLIN_TREPTOW_KOEPENICK(11009, "SK Berlin Treptow-K\u00f6penick"),
     @SerializedName(value = "SK Berlin Pankow", alternate = "11003")
     SK_BERLIN_PANKOW(11003, "SK Berlin Pankow"),
     @SerializedName(value = "SK Berlin Neukoelln", alternate = "11008")
-    SK_BERLIN_NEUKOELLN(11008, "SK Berlin Neukölln"),
+    SK_BERLIN_NEUKOELLN(11008, "SK Berlin Neuk\u00f6lln"),
     @SerializedName(value = "SK Berlin Lichtenberg", alternate = "11011")
     SK_BERLIN_LICHTENBERG(11011, "SK Berlin Lichtenberg"),
     @SerializedName(value = "SK Berlin Marzahn-Hellersdorf", alternate = "11010")
@@ -829,7 +829,7 @@ public enum District {
     @SerializedName(value = "SK Berlin Friedrichshain-Kreuzberg", alternate = "11002")
     SK_BERLIN_FRIEDRICHSHAIN_KREUZBERG(11002, "SK Berlin Friedrichshain-Kreuzberg"),
     @SerializedName(value = "SK Berlin Tempelhof-Schoeneberg", alternate = "11007")
-    SK_BERLIN_TEMPELHOF_SCHOENEBERG(11007, "SK Berlin Tempelhof-Schöneberg");
+    SK_BERLIN_TEMPELHOF_SCHOENEBERG(11007, "SK Berlin Tempelhof-Sch\u00f6neberg");
 
 
     private final int id;

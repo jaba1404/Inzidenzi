@@ -34,7 +34,6 @@ public class Incidence extends Command {
         final KeyDataResponse keyDataResponse = Inzidenzi.getKeyDataResponses().stream().filter(index -> index.getDistrict().equals(district)).findFirst().orElse(null);
         if (keyDataResponse == null)
             return;
-
         messageChannel.sendMessage(buildCoronaInfo(district.getDisplayName(), districtResponse.getCases(), districtResponse.getCasesPer100k(), districtResponse.getTotalCasesInLast7Days(), districtResponse.getIncidence(), districtResponse.getDeaths(), keyDataResponse, districtResponse.getState().getBlazonUrl()).build()).queue();
     }
 

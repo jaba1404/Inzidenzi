@@ -3,14 +3,12 @@ package us.jannis.inzidenzi.command;
 import net.dv8tion.jda.api.entities.Message;
 import org.reflections8.Reflections;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class CommandManager {
 
     private final List<Command> commands = new ArrayList<>();
-    public final static String PREFIX = "?";
+    public static final Map<Long, String> PREFIX_MAP = new HashMap<>();
 
     public CommandManager() {
         final Reflections reflections = new Reflections("us.jannis.inzidenzi.command.impl");
@@ -24,12 +22,19 @@ public class CommandManager {
     }
 
 
+    public static String getPrefix(Message message) {
+        if (!message.isFromGuild())
+            return "?";
+        return PREFIX_MAP.getOrDefault(message.getGuild().getIdLong(), "?");
+    }
+
     public void execute(Message message) {
         final String msg = message.getContentRaw().trim();
-        if (!msg.startsWith(PREFIX)) {
+        final String prefix = getPrefix(message);
+        if (!msg.startsWith(prefix) || message.getAuthor().isBot()) {
             return;
         }
-        final String[] split = msg.substring(PREFIX.length()).split(" ");
+        final String[] split = msg.substring(prefix.length()).split(" ");
         for (Command command : commands) {
             if (command.getName().equalsIgnoreCase(split[0]) || (command.getAliases() != null && Arrays.stream(command.getAliases()).anyMatch(split[0].toLowerCase()::equalsIgnoreCase))) {
                 final String[] args = Arrays.copyOfRange(split, 1, split.length);

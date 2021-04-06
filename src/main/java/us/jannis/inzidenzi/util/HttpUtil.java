@@ -66,7 +66,7 @@ public class HttpUtil {
     }
 
     public static String toString(HttpResponse httpResponse) throws IOException {
-        return EntityUtils.toString(httpResponse.getEntity());
+        return EntityUtils.toString(httpResponse.getEntity(), StandardCharsets.UTF_8);
     }
 
     public static JSONObject toJSONObject(HttpResponse httpResponse) throws IOException {

@@ -5,7 +5,7 @@ import us.jannis.inzidenzi.enums.State;
 
 public class StateResponse {
 
-    @SerializedName("LAN_ew_GEN")
+    @SerializedName("AdmUnitId")
     private State state;
 
     @SerializedName("Fallzahl")

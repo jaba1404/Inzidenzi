@@ -1,5 +1,7 @@
 package us.jannis.inzidenzi.util.update;
 
+import us.jannis.inzidenzi.Inzidenzi;
+
 import java.util.Calendar;
 import java.util.Timer;
 import java.util.concurrent.TimeUnit;

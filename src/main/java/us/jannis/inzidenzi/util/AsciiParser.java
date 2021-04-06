@@ -1,7 +1,6 @@
 package us.jannis.inzidenzi.util;
 
 import java.nio.charset.StandardCharsets;
-import java.util.regex.Pattern;
 
 public class AsciiParser {
 
@@ -18,16 +17,13 @@ public class AsciiParser {
     }
 
     public static String parseToAscii(String in) {
-        in = Pattern.compile("Ü(?=[a-zäöüß ])", Pattern.CANON_EQ).matcher(in).replaceAll("Ue");
-        in = Pattern.compile("Ö(?=[a-zäöüß ])", Pattern.CANON_EQ).matcher(in).replaceAll("Oe");
-        in = Pattern.compile("Ä(?=[a-zäöüß ])", Pattern.CANON_EQ).matcher(in).replaceAll("Ae");
-        return in.replace("ä", "ae")
-                .replace("ö", "oe")
-                .replace("ü", "ue")
-                .replace("Ä", "AE")
-                .replace("Ö", "OE")
-                .replace("Ü", "UE")
-                .replace("ß", "ss");
+     return in.replace("\u00e4", "ae")
+                .replace("\u00f6", "oe")
+                .replace("\u00fc", "ue")
+                .replace("\u00c4", "AE")
+                .replace("\u00d6", "OE")
+                .replace("\u00dc", "UE")
+                .replace("\u00df", "ss");
     }
 
 }

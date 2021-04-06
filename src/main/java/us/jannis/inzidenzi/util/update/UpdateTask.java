@@ -8,13 +8,16 @@ public class UpdateTask extends TimerTask {
 
     @Override
     public void run() {
-        if(Inzidenzi.getDistrictSaver().hasTodayAsSave()){
+        if(Inzidenzi.hasData()){
             System.out.println("No need to update data as of now.");
+            Inzidenzi.loadData();
             return;
         }
         System.out.println("Deleting old data...");
         Inzidenzi.getDistrictSaver().clearEntries();
         System.out.println("Gathering new data...");
+        Inzidenzi.saveData();
+        System.out.println("Loading new data...");
         Inzidenzi.loadData();
         System.out.println("Done updating");
     }
