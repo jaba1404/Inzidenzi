@@ -26,7 +26,7 @@ public class Saver<T> {
         File dir = new File(".", "saves");
         if(!dir.exists() && !dir.mkdir())
             throw new InitializationException();
-        saveFile = new File(dir, tClass.getSimpleName() + "-" + getDateTime()+ "-saves.json");
+        saveFile = new File(dir, tClass.getSimpleName() + "-" + getDateTime()+ ".json");
         if(!hasTodayAsSave() && dir.listFiles().length > 0){
             for (File file : dir.listFiles()) {
                 try {

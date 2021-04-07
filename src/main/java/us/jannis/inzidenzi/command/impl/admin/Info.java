@@ -1,6 +1,5 @@
-package us.jannis.inzidenzi.command.impl;
+package us.jannis.inzidenzi.command.impl.admin;
 
-import com.sun.management.OperatingSystemMXBean;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.Guild;
@@ -8,6 +7,7 @@ import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.sharding.ShardManager;
 import us.jannis.inzidenzi.Inzidenzi;
+import us.jannis.inzidenzi.annotations.HiddenInHelp;
 import us.jannis.inzidenzi.command.Command;
 
 import java.awt.*;
@@ -17,6 +17,7 @@ import java.lang.reflect.Method;
 import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
 
+@HiddenInHelp
 public class Info extends Command {
 
     public Info() {
@@ -29,11 +30,8 @@ public class Info extends Command {
             return;
         final ShardManager shardManager = Inzidenzi.getShardManager();
         final EmbedBuilder embedBuilder = new EmbedBuilder();
-
         int shardId = message.getJDA().getShardInfo().getShardId();
-
         final JDA shard = shardManager.getShards().get(shardId);
-
         embedBuilder.setColor(Color.green)
                 .setTitle("Debug Info")
                 .addField("Server ID", guild == null ? "Private Channel" : guild.getId(), false)
@@ -45,7 +43,6 @@ public class Info extends Command {
                 .addBlankField(false);
 
         final MemoryUsage memoryUsage = ManagementFactory.getMemoryMXBean().getHeapMemoryUsage();
-        final OperatingSystemMXBean os = (OperatingSystemMXBean) ManagementFactory.getOperatingSystemMXBean();
         final ClassLoadingMXBean cl = ManagementFactory.getClassLoadingMXBean();
         final RuntimeMXBean rntm = ManagementFactory.getRuntimeMXBean();
 
@@ -53,7 +50,15 @@ public class Info extends Command {
         dump(embedBuilder, memoryUsage.getClass(), memoryUsage);
         embedBuilder.addField("", "", false);
         dump(embedBuilder, rntm.getClass(), rntm);
-        dump(embedBuilder, os.getClass(), os);
+
+        if (com.sun.management.OperatingSystemMXBean.class.isAssignableFrom(ManagementFactory.getOperatingSystemMXBean().getClass())) {
+            final com.sun.management.OperatingSystemMXBean os = (com.sun.management.OperatingSystemMXBean) ManagementFactory.getOperatingSystemMXBean();
+            dump(embedBuilder, os.getClass(), os);
+        } else {
+            final OperatingSystemMXBean os = ManagementFactory.getOperatingSystemMXBean();
+            dump(embedBuilder, os.getClass(), os);
+        }
+
 
         final ThreadMXBean threadMXBean = ManagementFactory.getThreadMXBean();
         embedBuilder.addBlankField(false);
@@ -74,7 +79,7 @@ public class Info extends Command {
                     method.setAccessible(true);
                     Object returned = method.invoke(o);
                     if (returned instanceof Double) {
-                        returned = round((Double) returned, 2);
+                        returned = round((Double) returned, 2) + "%";
                     } else if (returned instanceof Long && (className.equals("OperatingSystem") || className.equals("MemoryUsage"))) {
                         returned = readable((Long) returned);
                     }

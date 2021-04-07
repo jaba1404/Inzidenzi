@@ -4,9 +4,9 @@ import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageChannel;
-import us.jannis.inzidenzi.Inzidenzi;
 import us.jannis.inzidenzi.command.Command;
 import us.jannis.inzidenzi.command.CommandManager;
+import us.jannis.inzidenzi.util.save.PrefixSaver;
 
 import java.awt.*;
 import java.nio.charset.StandardCharsets;
@@ -30,6 +30,7 @@ public class Prefix extends Command {
             final EmbedBuilder embedBuilder = new EmbedBuilder();
             embedBuilder.setTitle("Inzidenzis prefix has been changed to \"" + query + "\"");
             embedBuilder.setColor(Color.green);
+            PrefixSaver.savePrefixes();
             messageChannel.sendMessage(embedBuilder.build()).queue();
         }
     }

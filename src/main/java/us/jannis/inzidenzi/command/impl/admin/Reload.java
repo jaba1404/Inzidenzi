@@ -1,14 +1,16 @@
-package us.jannis.inzidenzi.command.impl;
+package us.jannis.inzidenzi.command.impl.admin;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import us.jannis.inzidenzi.Inzidenzi;
+import us.jannis.inzidenzi.annotations.HiddenInHelp;
 import us.jannis.inzidenzi.command.Command;
 
 import java.awt.*;
 
+@HiddenInHelp
 public class Reload extends Command {
 
     public Reload() {

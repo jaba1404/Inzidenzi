@@ -19,6 +19,7 @@ import us.jannis.inzidenzi.responses.StateResponse;
 import us.jannis.inzidenzi.util.RkiUtil;
 import us.jannis.inzidenzi.util.save.DistrictSaver;
 import us.jannis.inzidenzi.util.save.KeyDataSaver;
+import us.jannis.inzidenzi.util.save.PrefixSaver;
 import us.jannis.inzidenzi.util.save.StateSaver;
 
 import javax.security.auth.login.LoginException;
@@ -28,7 +29,6 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
@@ -47,6 +47,7 @@ public class Inzidenzi {
 
     static {
         try {
+            PrefixSaver.loadPrefixes();
             final EnumSet<GatewayIntent> gatewayIntents = GatewayIntent.getIntents(GatewayIntent.ALL_INTENTS);
             gatewayIntents.remove(GatewayIntent.GUILD_PRESENCES);
             final String token = new String(Files.readAllBytes(new File(new File("."), "artifacts/token.txt").toPath()), StandardCharsets.UTF_8).trim();
@@ -75,6 +76,9 @@ public class Inzidenzi {
 
     public static void loadData() {
         try {
+            DISTRICT_RESPONSES.clear();
+            STATE_RESPONSES.clear();
+            KEY_DATA_RESPONSES.clear();
             if (DISTRICT_SAVER.hasTodayAsSave())
                 DISTRICT_RESPONSES.addAll(DISTRICT_SAVER.readEntries());
             if (STATE_SAVER.hasTodayAsSave())

@@ -7,8 +7,8 @@ import java.util.*;
 
 public class CommandManager {
 
-    private final List<Command> commands = new ArrayList<>();
     public static final Map<Long, String> PREFIX_MAP = new HashMap<>();
+    private final List<Command> commands = new ArrayList<>();
 
     public CommandManager() {
         final Reflections reflections = new Reflections("us.jannis.inzidenzi.command.impl");
