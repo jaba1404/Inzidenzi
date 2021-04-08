@@ -14,7 +14,7 @@ import java.util.Arrays;
 public class Districts extends Command {
 
     public Districts() {
-        super("districts", "bezirke", "bezirk");
+        super("districts", "district","bezirke", "bezirk");
     }
 
     @Override

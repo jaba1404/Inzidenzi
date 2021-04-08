@@ -28,7 +28,7 @@ public class Uptime extends Command {
 
     @Override
     public String[] getHelp() {
-        return new String[]{"", "Get Inzidenzi's uptime"};
+        return new String[]{"", "Get Inzidenzis uptime"};
     }
 
     @Override
