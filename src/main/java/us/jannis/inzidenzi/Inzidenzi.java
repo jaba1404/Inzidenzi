@@ -47,6 +47,7 @@ public class Inzidenzi {
 
     static {
         try {
+            Runtime.getRuntime().addShutdownHook(new Thread(PrefixSaver::savePrefixes));
             PrefixSaver.loadPrefixes();
             final EnumSet<GatewayIntent> gatewayIntents = GatewayIntent.getIntents(GatewayIntent.ALL_INTENTS);
             gatewayIntents.remove(GatewayIntent.GUILD_PRESENCES);

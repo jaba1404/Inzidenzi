@@ -10,11 +10,10 @@ public class ReadyListener extends ListenerAdapter {
 
     @Override
     public void onReady(@NotNull ReadyEvent event) {
-        if(event.getJDA().getShardInfo().getShardId() == 0){
-            if(!Inzidenzi.hasData())
-                Inzidenzi.saveData();
-            Inzidenzi.loadData();
-            DataUpdater.startTimer();
+        if (event.getJDA().getShardInfo().getShardId() == 0 && !Inzidenzi.hasData()) {
+            Inzidenzi.saveData();
         }
+        DataUpdater.startTimer(event.getJDA().getShardInfo().getShardId());
+        Inzidenzi.loadData();
     }
 }

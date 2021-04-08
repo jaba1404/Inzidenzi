@@ -23,6 +23,8 @@ public class CommandUtil {
     }
 
 
+
+
     public String shortenDistrictNameDifferentiated(District district) {
         if (district.getDisplayName().startsWith("SK"))
             return shortenDistrictName(district) + " (Stadtkreis)";
@@ -77,12 +79,12 @@ public class CommandUtil {
     }
 
     public boolean isMatchingDistrict(District district, String input, float threshold) {
-        if (input.toLowerCase().contains("stadtkreis")) {
-            input = input.replaceAll("(?i)stadtkreis", "").trim();
+        if (input.toLowerCase().contains("stadtkreis") || input.toLowerCase().contains("sk")) {
+            input = input.replaceAll("(?i)stadtkreis", "").replaceAll("(?i)sk", "").trim();
             return match(input, shortenDistrictName(district), threshold) && district.getDisplayName().startsWith("SK");
         }
-        if (input.toLowerCase().contains("landkreis")) {
-            input = input.replaceAll("(?i)landkreis", "").trim();
+        if (input.toLowerCase().contains("landkreis") || input.toLowerCase().contains("lk")) {
+            input = input.replaceAll("(?i)landkreis", "").replaceAll("(?i)lk", "").trim();
             return match(input, shortenDistrictName(district), threshold) && district.getDisplayName().startsWith("LK");
         }
         return match(input, shortenDistrictName(district), threshold);
@@ -92,9 +94,6 @@ public class CommandUtil {
         return isMatchingDistrict(district, input, 0.8f);
     }
 
-    public boolean isMatchingState(State state, String input, float threshold) {
-        return match(state.getDisplayName(), input, threshold);
-    }
     public boolean isMatchingState(State state, String input) {
         return match(state.getDisplayName(), input, 0.8f);
     }

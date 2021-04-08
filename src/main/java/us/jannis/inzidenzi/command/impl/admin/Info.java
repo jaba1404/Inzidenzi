@@ -10,6 +10,7 @@ import us.jannis.inzidenzi.Inzidenzi;
 import us.jannis.inzidenzi.annotations.HiddenInHelp;
 import us.jannis.inzidenzi.command.Command;
 
+import javax.management.MBeanNotificationInfo;
 import java.awt.*;
 import java.lang.management.*;
 import java.lang.reflect.InvocationTargetException;
@@ -36,9 +37,7 @@ public class Info extends Command {
                 .setTitle("Debug Info")
                 .addField("Server ID", guild == null ? "Private Channel" : guild.getId(), false)
                 .addField("Shards", "Running: " + shardManager.getShardsRunning() + "\nQueued: " + shardManager.getShardsQueued() + "\nTotal: " + shardManager.getShardsTotal(), true)
-                .addField("Average gateway ping", shardManager.getAverageGatewayPing() + "ms", true)
-                .addField("", "", false)
-                .addField("Guilds in Shard", shard.getGuilds().size() + " of 2500", true)
+                .addField("Average gateway ping", shardManager.getAverageGatewayPing() + "ms\n\n**Guilds in Shard**\n" + shard.getGuilds().size() + "\n\n**Total Guilds**\n" + shardManager.getGuilds().size(), true)
                 .addField("Shard", "Index: " + shardId + "\nStatus: " + shard.getStatus().name() + "\nGateway: " + shard.getGatewayPing() + "ms\nRest: " + shard.getRestPing().complete() + "ms", true)
                 .addBlankField(false);
 
@@ -48,8 +47,12 @@ public class Info extends Command {
 
         dump(embedBuilder, cl.getClass(), cl);
         dump(embedBuilder, memoryUsage.getClass(), memoryUsage);
-        embedBuilder.addField("", "", false);
+        for (GarbageCollectorMXBean garbageCollectorMXBean : ManagementFactory.getGarbageCollectorMXBeans()) {
+            dump(embedBuilder, garbageCollectorMXBean.getClass(), garbageCollectorMXBean);
+        }
+
         dump(embedBuilder, rntm.getClass(), rntm);
+
 
         if (com.sun.management.OperatingSystemMXBean.class.isAssignableFrom(ManagementFactory.getOperatingSystemMXBean().getClass())) {
             final com.sun.management.OperatingSystemMXBean os = (com.sun.management.OperatingSystemMXBean) ManagementFactory.getOperatingSystemMXBean();
@@ -78,12 +81,23 @@ public class Info extends Command {
                 try {
                     method.setAccessible(true);
                     Object returned = method.invoke(o);
-                    if (returned instanceof Double) {
+                    if (returned instanceof String[]) {
+                        final Object backup = returned;
+                        returned = null;
+                        for (String s : ((String[]) backup)) {
+                            if (returned == null)
+                                returned = s + "\n";
+                            else
+                                returned += s + "\n";
+                        }
+                    } else if (returned instanceof MBeanNotificationInfo[]) {
+                        continue;
+                    }  else if (returned instanceof Double) {
                         returned = round((Double) returned, 2) + "%";
                     } else if (returned instanceof Long && (className.equals("OperatingSystem") || className.equals("MemoryUsage"))) {
                         returned = readable((Long) returned);
                     }
-                    if (name.startsWith("getObjectName") || returned.toString().length() > 100)
+                    if (name.startsWith("getObjectName") || returned == null || returned.toString().length() > 100)
                         continue;
                     stringBuilder.append("**").append(name.replace("get", "")).append("**\n").append(returned).append("\n");
                 } catch (IllegalAccessException | InvocationTargetException e) {
@@ -91,7 +105,7 @@ public class Info extends Command {
                 }
             }
         }
-        embedBuilder.addField("", stringBuilder.toString(), true);
+        embedBuilder.addField(className, stringBuilder.toString(), true);
     }
 
 

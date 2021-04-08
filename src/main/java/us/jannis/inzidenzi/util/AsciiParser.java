@@ -8,10 +8,6 @@ public class AsciiParser {
 
     }
 
-    public static String parseToUtf8(String in){
-        return new String(in.getBytes(StandardCharsets.UTF_8));
-    }
-
     public static String parseToUtf8AndAscii(String in) {
         return parseToAscii(new String(in.getBytes(StandardCharsets.UTF_8)));
     }

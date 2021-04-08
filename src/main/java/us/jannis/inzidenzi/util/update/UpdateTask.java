@@ -6,6 +6,12 @@ import java.util.TimerTask;
 
 public class UpdateTask extends TimerTask {
 
+    private final int shard;
+
+    public UpdateTask(int shard) {
+        this.shard = shard;
+    }
+
     @Override
     public void run() {
         if(Inzidenzi.hasData()){
@@ -13,10 +19,12 @@ public class UpdateTask extends TimerTask {
             Inzidenzi.loadData();
             return;
         }
-        System.out.println("Deleting old data...");
-        Inzidenzi.getDistrictSaver().clearEntries();
-        System.out.println("Gathering new data...");
-        Inzidenzi.saveData();
+        if(shard == 0){
+            System.out.println("Deleting old data...");
+            Inzidenzi.getDistrictSaver().clearEntries();
+            System.out.println("Gathering new data...");
+            Inzidenzi.saveData();
+        }
         System.out.println("Loading new data...");
         Inzidenzi.loadData();
         System.out.println("Done updating");

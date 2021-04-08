@@ -10,9 +10,9 @@ import us.jannis.inzidenzi.command.Command;
 import us.jannis.inzidenzi.command.CommandManager;
 
 import java.awt.*;
-import java.util.Arrays;
 
 public class Help extends Command {
+
     public Help() {
         super("help");
     }
@@ -22,14 +22,13 @@ public class Help extends Command {
         final EmbedBuilder embedBuilder = new EmbedBuilder();
         embedBuilder.setTitle("Commands: ");
         Inzidenzi.getCommandManager().getCommands().forEach(command -> {
-
-            if(!isOwner(message.getAuthor()) && command.getClass().isAnnotationPresent(HiddenInHelp.class))
+            if (!isOwner(message.getAuthor()) && command.getClass().isAnnotationPresent(HiddenInHelp.class))
                 return;
-
-            final String alias = command.aliases.length == 0 ? "" :  Arrays.toString(command.aliases).replace("[", "/").replace("]", "").replace(", ", "/");
+            final String alias = command.aliases.length == 0 ? "" : "/"+String.join("/", command.aliases);
             embedBuilder.addField(CommandManager.getPrefix(message) + command.name + alias + " " + command.getHelp()[0], command.getHelp()[1], false);
         });
         embedBuilder.setColor(Color.green);
+        embedBuilder.setFooter("Supported countries: Germany");
         messageChannel.sendMessage(embedBuilder.build()).queue();
     }
 
