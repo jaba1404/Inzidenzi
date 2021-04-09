@@ -97,12 +97,9 @@ public class Inzidenzi {
 
     public static void saveData() {
         try {
-            DISTRICT_RESPONSES.addAll(RkiUtil.indexDistricts());
-            DISTRICT_SAVER.saveEntries(DISTRICT_RESPONSES);
-            STATE_RESPONSES.addAll(RkiUtil.indexStates());
-            STATE_SAVER.saveEntries(STATE_RESPONSES);
-            KEY_DATA_RESPONSES.addAll(RkiUtil.indexKeyData());
-            KEY_DATA_SAVER.saveEntries(KEY_DATA_RESPONSES);
+            DISTRICT_SAVER.saveEntries(RkiUtil.indexDistricts());
+            STATE_SAVER.saveEntries(RkiUtil.indexStates());
+            KEY_DATA_SAVER.saveEntries(RkiUtil.indexKeyData());
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -14,14 +14,13 @@ public class UpdateTask extends TimerTask {
 
     @Override
     public void run() {
+        System.out.println("Starting update task...");
         if(Inzidenzi.hasData()){
             System.out.println("No need to update data as of now.");
             Inzidenzi.loadData();
             return;
         }
         if(shard == 0){
-            System.out.println("Deleting old data...");
-            Inzidenzi.getDistrictSaver().clearEntries();
             System.out.println("Gathering new data...");
             Inzidenzi.saveData();
         }

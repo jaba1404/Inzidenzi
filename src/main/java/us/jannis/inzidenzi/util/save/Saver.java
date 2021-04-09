@@ -15,19 +15,17 @@ import java.util.List;
 
 public class Saver<T> {
 
-    private final Gson gson;
-    private final File saveFile;
+    private final File dir = new File(".", "saves");
     private final Class<T> type;
     private String lastUpdate;
+    private final Gson gson;
 
     public Saver(Class<T> tClass) {
         this.type = tClass;
         gson = new GsonBuilder().setPrettyPrinting().create();
-        File dir = new File(".", "saves");
-        if(!dir.exists() && !dir.mkdir())
+        if (!dir.exists() && !dir.mkdir())
             throw new InitializationException();
-        saveFile = new File(dir, tClass.getSimpleName() + "-" + getDateTime()+ ".json");
-        if(!hasTodayAsSave() && dir.listFiles().length > 0){
+        if (!hasTodayAsSave() && dir.listFiles().length > 0) {
             for (File file : dir.listFiles()) {
                 try {
                     Files.delete(file.toPath());
@@ -38,7 +36,11 @@ public class Saver<T> {
         }
     }
 
-    public void clearEntries(){
+    public File getSaveFile() {
+        return new File(dir, type.getSimpleName() + "-" + getDateTime() + ".json");
+    }
+
+    public void clearEntries() {
         for (File file : new File(".", "saves").listFiles()) {
             try {
                 Files.delete(file.toPath());
@@ -48,8 +50,8 @@ public class Saver<T> {
         }
     }
 
-    public boolean hasTodayAsSave(){
-        return saveFile.exists();
+    public boolean hasTodayAsSave() {
+        return getSaveFile().exists();
     }
 
     private String getDateTime() {
@@ -61,12 +63,12 @@ public class Saver<T> {
     public void saveEntries(List<T> entries) {
         try {
             lastUpdate = getDateTime();
-            if(!hasTodayAsSave() && !saveFile.createNewFile())
+            if (!hasTodayAsSave() && !getSaveFile().createNewFile())
                 throw new InitializationException();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        try (final BufferedWriter buffWriter = Files.newBufferedWriter(saveFile.toPath())) {
+        try (final BufferedWriter buffWriter = Files.newBufferedWriter(getSaveFile().toPath())) {
             buffWriter.append(gson.toJson(entries, new TypeToken<List<T>>() {
             }.getType()));
             buffWriter.newLine();
@@ -76,8 +78,8 @@ public class Saver<T> {
     }
 
     public List<T> readEntries() throws FileNotFoundException {
-        lastUpdate = saveFile.getName().split("-")[1];
-        return gson.fromJson(new JsonReader(new FileReader(saveFile)), TypeToken.getParameterized(ArrayList.class, type).getType());
+        lastUpdate = getSaveFile().getName().split("-")[1].split("\\.")[0];
+        return gson.fromJson(new JsonReader(new FileReader(getSaveFile())), TypeToken.getParameterized(ArrayList.class, type).getType());
     }
 
     public String getLastUpdate() {
