@@ -27,10 +27,23 @@ public class HttpUtil {
         return client.execute(httpGet);
     }
 
+
     public static Object toObjectAscii(JSONObject jsonObject, Class<?> clazz) {
         return gson.fromJson(AsciiParser.parseToUtf8AndAscii(jsonObject.toString()), clazz);
     }
 
+
+    public static Object toObject(HttpResponse httpResponse, Class<?> clazz) throws IOException {
+        return gson.fromJson(toString(httpResponse), clazz);
+    }
+
+    public static Object toObject(String s, Class<?> clazz) throws IOException {
+        return gson.fromJson(s, clazz);
+    }
+
+    public static String toString(HttpResponse httpResponse) throws IOException {
+        return EntityUtils.toString(httpResponse.getEntity());
+    }
 
     public static JSONObject toJSONObject(HttpResponse httpResponse) throws IOException {
         return new JSONObject(EntityUtils.toString(httpResponse.getEntity()));

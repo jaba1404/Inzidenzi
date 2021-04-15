@@ -4,12 +4,14 @@ import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageChannel;
+import us.jannis.inzidenzi.annotations.Globally;
 import us.jannis.inzidenzi.command.Command;
 
 import java.awt.*;
 import java.lang.management.ManagementFactory;
 import java.text.SimpleDateFormat;
 
+@Globally
 public class Uptime extends Command {
 
     public Uptime() {

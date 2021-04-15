@@ -9,6 +9,7 @@ import us.jannis.inzidenzi.enums.State;
 import us.jannis.inzidenzi.responses.KeyDataResponse;
 import us.jannis.inzidenzi.responses.StateResponse;
 
+
 public class Total extends Command {
 
     public Total() {

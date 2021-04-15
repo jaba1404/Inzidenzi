@@ -10,16 +10,31 @@ repositories {
     jcenter()
 }
 
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'Main'
+    }
+    from {
+        (configurations.compile.findAll { !it.path.endsWith(".pom") }).collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+}
+
 dependencies {
 
-    implementation group: 'net.oneandone.reflections8', name: 'reflections8', version: '0.11.5'
-    implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.13'
-    implementation group: 'org.apache.commons', name: 'commons-text', version: '1.9'
-    implementation group: 'com.google.code.gson', name: 'gson', version: '2.8.6'
-    implementation group: 'net.dv8tion', name: 'JDA', version: '4.2.0_247'
-    implementation group: 'com.opencsv', name: 'opencsv', version: '5.4'
-    implementation group: 'org.jsoup', name: 'jsoup', version: '1.13.1'
-    implementation group: 'org.json', name: 'json', version: '20210307'
+    compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-csv', version: '2.12.2'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.12.2'
+    compile group: 'net.oneandone.reflections8', name: 'reflections8', version: '0.11.5'
+    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.13'
+    compile group: 'org.apache.commons', name: 'commons-text', version: '1.9'
+    compile group: "com.google.guava", name: "guava", version: "30.1.1-jre"
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.8.6'
+    compile group: 'net.dv8tion', name: 'JDA', version: '4.2.0_247'
+    compile group: 'com.opencsv', name: 'opencsv', version: '5.4'
+    compile group: 'org.jsoup', name: 'jsoup', version: '1.13.1'
+    compile group: 'org.json', name: 'json', version: '20210307'
 
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'

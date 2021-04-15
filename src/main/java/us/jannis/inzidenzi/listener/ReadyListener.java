@@ -12,8 +12,9 @@ public class ReadyListener extends ListenerAdapter {
     public void onReady(@NotNull ReadyEvent event) {
         if (event.getJDA().getShardInfo().getShardId() == 0 && !Inzidenzi.hasData()) {
             Inzidenzi.saveData();
+        } else if(Inzidenzi.hasData()){
+            Inzidenzi.loadData();
         }
         DataUpdater.startTimer(event.getJDA().getShardInfo().getShardId());
-        Inzidenzi.loadData();
     }
 }

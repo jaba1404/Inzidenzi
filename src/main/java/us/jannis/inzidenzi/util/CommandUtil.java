@@ -9,20 +9,21 @@ import us.jannis.inzidenzi.enums.State;
 import us.jannis.inzidenzi.responses.KeyDataResponse;
 
 import java.awt.*;
+import java.math.BigDecimal;
+import java.text.CharacterIterator;
 import java.text.NumberFormat;
+import java.text.StringCharacterIterator;
 import java.util.Arrays;
 import java.util.Locale;
 
 public class CommandUtil {
 
-    private static final String[] ADMIN_ID = new String[] {"426667039265128448", "225249348395597825"};
+    private static final String[] ADMIN_ID = new String[]{"426667039265128448", "225249348395597825"};
     private static final NumberFormat FORMATTER = NumberFormat.getInstance(Locale.GERMAN);
 
-    public boolean isOwner(User user){
+    public boolean isOwner(User user) {
         return Arrays.stream(ADMIN_ID).anyMatch(s -> s.equals(user.getId()));
     }
-
-
 
 
     public String shortenDistrictNameDifferentiated(District district) {
@@ -34,7 +35,7 @@ public class CommandUtil {
     }
 
 
-    public EmbedBuilder buildCoronaInfo(String title, int total, double casesPer100kCitizens, double casesInLast7Days, double incidencePer100k, long deaths, KeyDataResponse keyDataResponse, String blazonUrl){
+    /*public EmbedBuilder buildCoronaInfo(String title, int total, double casesPer100kCitizens, double casesInLast7Days, double incidencePer100k, long deaths, KeyDataResponse keyDataResponse, String blazonUrl){
         final EmbedBuilder embedBuilder = new EmbedBuilder();
         embedBuilder.setTitle(title, "https://corona.rki.de/");
         embedBuilder.addField("Gesamtzahl der F\u00e4lle", readable(total) + optionalValue(keyDataResponse.getNewCasesToYesterday()), false);
@@ -49,23 +50,64 @@ public class CommandUtil {
         embedBuilder.setFooter("This data might be outdated and incorrect, no liability is taken\nLast updated: " + Inzidenzi.getDistrictSaver().getLastUpdate());
         embedBuilder.setColor(Color.green);
         return embedBuilder;
+    }*/
+
+    public EmbedBuilder buildCoronaInfo(String title, int total, double casesPer100kCitizens, double casesInLast7Days, double incidencePer100k, long deaths, KeyDataResponse keyDataResponse, String blazonUrl) {
+        final EmbedBuilder embedBuilder = new EmbedBuilder();
+        embedBuilder.setTitle(title, "https://corona.rki.de/");
+        embedBuilder.addField("Total cases", readable(total) + optionalValue(keyDataResponse.getNewCasesToYesterday()), false);
+        embedBuilder.addField("Cases per 100,000 people", readable(round(casesPer100kCitizens, 2)), false);
+        embedBuilder.addField("Cases in the last 7 days (reporting date)", readable(round(casesInLast7Days, 2)), false);
+        embedBuilder.addField("7-day incidence per 100,000 population (reporting date)", readable(round(incidencePer100k, 2)), false);
+        embedBuilder.addField("Total deaths", readable(deaths) + optionalValue(keyDataResponse.getNewDeathsToYesterday()), false);
+        embedBuilder.addField("Estimates, rounded to 100 people",
+                "**Active cases**: " + readable(keyDataResponse.getActiveCases()) + optionalValue(keyDataResponse.getNewActiveCasesToYesterday()) +
+                        "\n**Total recoveries**: " + readable(keyDataResponse.getTotalRecovered()) + optionalValue(keyDataResponse.getNewRecoversToYesterday()), false);
+        embedBuilder.setThumbnail(blazonUrl);
+        embedBuilder.setFooter("This data might be outdated and incorrect, no liability is taken\nLast updated: " + Inzidenzi.getDistrictSaver().getLastUpdate());
+        embedBuilder.setColor(Color.green);
+        return embedBuilder;
     }
 
-    private String readable(double d) {
-        return FORMATTER.format(d);
+    public String readable(double d) {
+        return d == 0 ? "0 / Unknown" : FORMATTER.format(d);
     }
 
-    private String readable(long l) {
-        return FORMATTER.format(l);
+    public String readable(long l) {
+        return l == 0 ? "0 / Unknown" : FORMATTER.format(l);
     }
 
-    private String readable(int i){
-        return FORMATTER.format(i);
+    public String readable(BigDecimal bigDecimal) {
+        if (bigDecimal == null)
+            return "Unknown";
+        return FORMATTER.format(bigDecimal);
+    }
+
+    public String readable(int i) {
+        return i == 0 ? "0 / Unknown" : FORMATTER.format(i);
+    }
+
+    public String readableUnit(long bytes) {
+        if (-1000 < bytes && bytes < 1000) {
+            return bytes + " B";
+        }
+        CharacterIterator ci = new StringCharacterIterator("kMGTPE");
+        while (bytes <= -999_950 || bytes >= 999_950) {
+            bytes /= 1000;
+            ci.next();
+        }
+        return String.format("%.1f %cB", bytes / 1000.0, ci.current());
     }
 
     public double round(double value, double decimals) {
         decimals = (int) Math.pow(10, decimals);
         return Math.round(value * decimals) / decimals;
+    }
+
+    public String optionalValue(BigDecimal value) {
+        if (value == null)
+            return "";
+        return " (+" + readable(value) + ")";
     }
 
     public String optionalValue(int value) {
@@ -99,7 +141,7 @@ public class CommandUtil {
     }
 
     public boolean match(String text, String key, float threshold) {
-        if(text.equalsIgnoreCase(key))
+        if (text.equalsIgnoreCase(key))
             return true;
         boolean ready = false;
         String[] keys = key.contains(" ") ? key.split(" ") : new String[]{key};
@@ -113,6 +155,23 @@ public class CommandUtil {
             }
         }
         return ready;
+    }
+
+
+    public float match(String text, String key) {
+        if (text.equalsIgnoreCase(key))
+            return 1;
+        float match = 0;
+        int counts = 0;
+        final String[] keys = key.contains(" ") ? key.split(" ") : new String[]{key};
+        final JaroWinklerDistance jaroWinklerDistance = new JaroWinklerDistance();
+        for (final String s : text.split(" ")) {
+            for (final String k : keys) {
+                match += jaroWinklerDistance.apply(s, k);
+                counts++;
+            }
+        }
+        return counts == 0 ? 0 : match / counts;
     }
 
 }

@@ -4,10 +4,12 @@ import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageChannel;
+import us.jannis.inzidenzi.annotations.Globally;
 import us.jannis.inzidenzi.command.Command;
 
 import java.awt.*;
 
+@Globally
 public class Invite extends Command {
     private static final String INVITE_LINK = "https://discord.com/api/oauth2/authorize?client_id=826887458725167114&permissions=268553296&scope=bot";
 

@@ -55,8 +55,8 @@ public class Saver<T> {
     }
 
     private String getDateTime() {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-        LocalDateTime now = LocalDateTime.now();
+        final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        final LocalDateTime now = LocalDateTime.now();
         return dtf.format(now);
     }
 
@@ -78,7 +78,7 @@ public class Saver<T> {
     }
 
     public List<T> readEntries() throws FileNotFoundException {
-        lastUpdate = getSaveFile().getName().split("-")[1].split("\\.")[0];
+        lastUpdate = getSaveFile().getName().split("-")[1].replace(".json","");
         return gson.fromJson(new JsonReader(new FileReader(getSaveFile())), TypeToken.getParameterized(ArrayList.class, type).getType());
     }
 

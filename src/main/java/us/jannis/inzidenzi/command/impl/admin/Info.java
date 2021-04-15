@@ -15,8 +15,6 @@ import java.awt.*;
 import java.lang.management.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.text.CharacterIterator;
-import java.text.StringCharacterIterator;
 
 @HiddenInHelp
 public class Info extends Command {
@@ -95,7 +93,7 @@ public class Info extends Command {
                     }  else if (returned instanceof Double) {
                         returned = round((Double) returned, 2) + "%";
                     } else if (returned instanceof Long && (className.equals("OperatingSystem") || className.equals("MemoryUsage"))) {
-                        returned = readable((Long) returned);
+                        returned = readableUnit((Long) returned);
                     }
                     if (name.startsWith("getObjectName") || returned == null || returned.toString().length() > 100)
                         continue;
@@ -108,18 +106,6 @@ public class Info extends Command {
         embedBuilder.addField(className, stringBuilder.toString(), true);
     }
 
-
-    public static String readable(long bytes) {
-        if (-1000 < bytes && bytes < 1000) {
-            return bytes + " B";
-        }
-        CharacterIterator ci = new StringCharacterIterator("kMGTPE");
-        while (bytes <= -999_950 || bytes >= 999_950) {
-            bytes /= 1000;
-            ci.next();
-        }
-        return String.format("%.1f %cB", bytes / 1000.0, ci.current());
-    }
 
     @Override
     public String[] getHelp() {

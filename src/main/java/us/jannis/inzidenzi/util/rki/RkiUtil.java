@@ -1,10 +1,11 @@
-package us.jannis.inzidenzi.util;
+package us.jannis.inzidenzi.util.rki;
 
 import org.apache.http.HttpResponse;
 import org.json.JSONObject;
 import us.jannis.inzidenzi.responses.DistrictResponse;
 import us.jannis.inzidenzi.responses.KeyDataResponse;
 import us.jannis.inzidenzi.responses.StateResponse;
+import us.jannis.inzidenzi.util.HttpUtil;
 
 import java.io.IOException;
 import java.util.ArrayList;

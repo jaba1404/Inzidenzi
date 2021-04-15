@@ -4,12 +4,13 @@ import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageChannel;
+import us.jannis.inzidenzi.annotations.Globally;
 import us.jannis.inzidenzi.annotations.HiddenInHelp;
 import us.jannis.inzidenzi.command.Command;
 
 import java.awt.*;
 
-
+@Globally
 @HiddenInHelp
 public class Support extends Command {
 
